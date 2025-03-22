@@ -141,32 +141,40 @@ export const Container = () => {
             </div>
           </div>
 
-          <div className="sponsor-details">
-            <div className="sponsor-call-to">
-              <div className="text-wrapper-18">become a sponsor</div>
-              <div className="description-7">
-                <a href="https://form.typeform.com/to/wf94YwH4?typeform-source=t.co" target="_blank" rel="noopener noreferrer" className="text-wrapper-16">limited positions available across multiple tiers. for sponsorship inquiries, sign up here.</a>
+          <a 
+            href="https://form.typeform.com/to/wf94YwH4?typeform-source=t.co" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="sponsor-details-link"
+            aria-label="Become a sponsor - Apply for sponsorship positions"
+          >
+            <div className="sponsor-details">
+              <div className="sponsor-call-to">
+                <div className="text-wrapper-18">become a sponsor</div>
+                <div className="description-7">
+                  <span className="text-wrapper-16">limited positions available across multiple tiers. for sponsorship inquiries, sign up here.</span>
+                </div>
+              </div>
+
+              <div className="sponsor-terms">
+                <p className="description-8">
+                  partnership term: <br />
+                  2025-03-28 through 2025-04-28 
+                  <br />
+                  <br />
+                  visibility metrics: <br />
+                  ~500k developer impressions
+                  <br />
+                  <br />
+                  technical benefits: <br />
+                  api access, integration demos, product workshops
+                  <br /> <br />
+                  commitment deadline: <br />
+                  2025-03-22 23:59 utc
+                </p>
               </div>
             </div>
-
-            <div className="sponsor-terms">
-              <p className="description-8">
-                partnership term: <br />
-                2025-03-28 through 2025-04-28 
-                <br />
-                <br />
-                visibility metrics: <br />
-                ~500k developer impressions
-                <br />
-                <br />
-                technical benefits: <br />
-                api access, integration demos, product workshops
-                <br /> <br />
-                commitment deadline: <br />
-                2025-03-22 23:59 utc
-              </p>
-            </div>
-          </div>
+          </a>
         </div>
       </div>
     </div>

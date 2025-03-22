@@ -367,6 +367,29 @@
   color: var(--typesignal);
 }
 
+/* Adding the new styles for the sponsor-details-link */
+.container .sponsor-details-link {
+  display: block;
+  text-decoration: none;
+  width: 35%;
+  position: relative;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.container .sponsor-details-link:hover {
+  opacity: 0.9;
+}
+
+.container .sponsor-details-link:hover .sponsor-details {
+  background-color: var(--bgsecondary);
+  filter: brightness(0.97);
+}
+
+.container .sponsor-details-link .sponsor-details {
+  width: 100%;
+}
+
 @media (max-width: 1280px) {
   .container .sponsors-container {
     max-width: 900px;
@@ -399,7 +422,8 @@
   
   .container .sponsor-tier,
   .container .sponsors-description,
-  .container .sponsor-details {
+  .container .sponsor-details,
+  .container .sponsor-details-link {
     width: 100%;
   }
   
@@ -478,7 +502,8 @@
   }
   
   .container .sponsor-tier,
-  .container .sponsor-details {
+  .container .sponsor-details,
+  .container .sponsor-details-link {
     width: 100%;
     margin-bottom: 24px;
     align-items: flex-start;
