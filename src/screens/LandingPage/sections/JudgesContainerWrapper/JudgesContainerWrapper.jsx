@@ -13,9 +13,70 @@ export const JudgesContainerWrapper = () => {
       clone.classList.add('clone-img');
       wrapper.appendChild(clone);
     });
+
+    // Observer reference to be used in resize handler and cleanup
+    let observer = null;
     
+    // Function to setup or remove intersection observers based on viewport width
+    const handleViewportChange = () => {
+      const isMobile = window.innerWidth <= 480;
+      const judgeLinks = document.querySelectorAll('.judges-container-wrapper .judge-container-link');
+      
+      // If moving from mobile to desktop, remove any 'in-viewport' classes
+      if (!isMobile) {
+        if (observer) {
+          observer.disconnect();
+          observer = null;
+        }
+        judgeLinks.forEach(link => {
+          link.classList.remove('in-viewport');
+        });
+        return;
+      }
+      
+      // If already setup for mobile, do nothing
+      if (observer) return;
+      
+      // Create observer to detect when judge containers enter/exit viewport
+      observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          // Add 'in-viewport' class when element is visible
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-viewport');
+          } else {
+            // Remove class when element is not visible
+            entry.target.classList.remove('in-viewport');
+          }
+        });
+      }, {
+        root: null, // Use viewport as root
+        rootMargin: '0px',
+        threshold: 0.3 // When at least 30% of the element is visible
+      });
+      
+      // Observe all judge links
+      judgeLinks.forEach(link => {
+        observer.observe(link);
+      });
+    };
+    
+    // Initial setup
+    handleViewportChange();
+    
+    // Add resize listener for orientation changes or browser resizing
+    window.addEventListener('resize', handleViewportChange);
+    
+    // Cleanup function
     return () => {
-      // Cleanup - remove the clone images
+      // Remove event listener
+      window.removeEventListener('resize', handleViewportChange);
+      
+      // Disconnect observer if exists
+      if (observer) {
+        observer.disconnect();
+      }
+      
+      // Remove the clone images
       document.querySelectorAll('.clone-img').forEach(clone => {
         clone.remove();
       });

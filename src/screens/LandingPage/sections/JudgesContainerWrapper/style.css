@@ -371,4 +371,26 @@
   .judges-container-wrapper .judge-container-link {
     width: 100%;
   }
+
+  /* Mobile specific animations - automatically animate without hover */
+  .judges-container-wrapper .judge-container-link .u-a,
+  .judges-container-wrapper .judge-container-link .img {
+    animation: none; /* Reset any hover animations that might be active */
+  }
+
+  .judges-container-wrapper .judge-container-link .clone-img {
+    animation: none; /* Reset any hover animations that might be active */
+  }
+
+  /* These classes will be added via JavaScript when in viewport */
+  .judges-container-wrapper .judge-container-link.in-viewport .u-a,
+  .judges-container-wrapper .judge-container-link.in-viewport .img {
+    animation: cycleImage 2.5s linear infinite;
+    filter: saturate(2) contrast(1.1);
+  }
+
+  .judges-container-wrapper .judge-container-link.in-viewport .clone-img {
+    animation: cycleImageClone 2.5s linear infinite;
+    filter: saturate(2) contrast(1.1);
+  }
 }
