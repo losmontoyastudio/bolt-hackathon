@@ -91,6 +91,27 @@
 .triangle:before {
   content: '';
   position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  top: -10px;
+  left: -10px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background: #333333;
+  opacity: 1;
+}
+
+.bolt {
+  width: 0;
+  height: 0;
+  background-color: transparent;
+  border: none;
+  position: relative;
+}
+
+.bolt:before {
+  content: '';
+  position: absolute;
   width: 12px;
   height: 20px;
   background-color: transparent;
@@ -103,6 +124,12 @@
 
 .square {
   transform: scale(0.8);
+}
+
+.rectangle {
+  transform: scale(0.8);
+  width: 28px;
+  height: 16px;
 }
 
 .circle {
@@ -160,7 +187,17 @@
   vertical-align: middle;
 }
 
-.shapes-converged .triangle:before {
+.shapes-converged .bolt {
+  animation-delay: 0s;
+  width: 0;
+  height: 0;
+  border: none;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.shapes-converged .bolt:before {
   content: '';
   position: absolute;
   width: 10px;
@@ -173,11 +210,30 @@
   opacity: 1;
 }
 
+.shapes-converged .triangle:before {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
+  top: -8px;
+  left: -8px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background: #333333;
+  opacity: 1;
+}
+
 .shapes-converged .square {
   animation-delay: 0.1s;
   transform: rotate(45deg);
   width: 14px;
   height: 14px;
+}
+
+.shapes-converged .rectangle {
+  animation-delay: 0.1s;
+  width: 20px;
+  height: 12px;
 }
 
 .shapes-converged .circle {

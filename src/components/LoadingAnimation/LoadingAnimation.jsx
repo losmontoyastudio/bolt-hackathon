@@ -73,26 +73,26 @@ export const LoadingAnimation = () => {
     if (currentLineIndex === 5 && shapesConverged) {
       return (
         <div className="shapes-converged">
-          <div className="shape triangle"></div>
+          <div className="shape bolt"></div>
           <div className="shape square"></div>
           <div className="shape circle"></div>
-          <div className="shape diamond"></div>
-          <div className="shape hexagon"></div>
+          <div className="shape triangle"></div>
+          <div className="shape rectangle"></div>
         </div>
       );
     }
 
     switch (currentShape) {
       case 0:
-        return <div className="shape triangle"></div>; // Lightning bolt (using triangle class)
+        return <div className="shape bolt"></div>; // Lightning bolt
       case 1:
         return <div className="shape square"></div>;
       case 2:
         return <div className="shape circle"></div>;
       case 3:
-        return <div className="shape diamond"></div>;
+        return <div className="shape triangle"></div>;
       case 4:
-        return <div className="shape hexagon"></div>; // Second diamond (using hexagon class)
+        return <div className="shape rectangle"></div>;
       default:
         return null;
     }
