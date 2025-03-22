@@ -7,6 +7,7 @@ import { PageContainer } from "./sections/PageContainer";
 import { PrizesContainer } from "./sections/PrizesContainer";
 import { LoadingAnimation } from "../../components/LoadingAnimation";
 import { ThemeToggle } from "../../components/ThemeToggle";
+import { CoordinateToggle } from "../../components/CoordinateToggle";
 import "./style.css";
 
 export const LandingPage = () => {
@@ -14,6 +15,7 @@ export const LandingPage = () => {
     <div className="landing-page">
       <LoadingAnimation />
       <ThemeToggle />
+      <CoordinateToggle />
       <div className="centered-content">
         <PageContainer />
         <PrizesContainer />
