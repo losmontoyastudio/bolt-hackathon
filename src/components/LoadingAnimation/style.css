@@ -14,6 +14,23 @@
   transition: opacity 0.3s ease-out;
 }
 
+.animation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  max-width: 90vw;
+}
+
+.shape-container {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
 .loading-text {
   font-family: 'JetBrains Mono', monospace;
   font-weight: 200; /* ExtraLight */
@@ -21,7 +38,9 @@
   line-height: 133%;
   letter-spacing: 0%;
   color: #333333;
-  text-align: left;
+  text-align: center;
+  min-height: 15px;
+  margin-bottom: 40px;
 }
 
 .cursor {
@@ -32,6 +51,178 @@
 .fade-out {
   opacity: 0;
   pointer-events: none;
+}
+
+/* Progress bar styles */
+.progress-container {
+  width: 100%;
+  height: 1px;
+  background-color: #f0f0f0;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #333333;
+  width: 0;
+  transition: width 0.3s ease-out;
+}
+
+/* Shape styles */
+.shape {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #333333;
+  background-color: transparent;
+  animation: fadeIn 0.5s ease forwards;
+  opacity: 0;
+  transform: scale(0.8);
+  position: relative;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  background-color: transparent;
+  border: none;
+  position: relative;
+}
+
+.triangle:before {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 20px;
+  background-color: transparent;
+  top: -10px;
+  left: -6px;
+  clip-path: polygon(50% 0%, 0% 50%, 40% 50%, 0% 100%, 100% 40%, 60% 40%, 100% 0%);
+  background: #333333;
+  opacity: 1;
+}
+
+.square {
+  transform: scale(0.8);
+}
+
+.circle {
+  border-radius: 50%;
+  transform: scale(0.8);
+}
+
+.diamond {
+  transform: rotate(45deg) scale(0.8);
+}
+
+.hexagon {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  position: relative;
+  border: 1px solid #333333;
+  transform: rotate(45deg) scale(0.8);
+}
+
+.hexagon:before,
+.hexagon:after {
+  display: none;
+}
+
+/* Converged shapes styling */
+.shapes-converged {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 20px;
+  gap: 16px;
+  width: auto;
+}
+
+.shapes-converged .shape {
+  position: relative;
+  opacity: 0;
+  margin: 0;
+  animation: fadeInShape 0.8s ease forwards;
+  display: inline-block;
+  vertical-align: middle;
+  transform-origin: center;
+}
+
+/* Ensure proper vertical alignment for each shape in converged state */
+.shapes-converged .triangle {
+  animation-delay: 0s;
+  width: 0;
+  height: 0;
+  border: none;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.shapes-converged .triangle:before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 16px;
+  background-color: transparent;
+  top: -8px;
+  left: -5px;
+  clip-path: polygon(50% 0%, 0% 50%, 40% 50%, 0% 100%, 100% 40%, 60% 40%, 100% 0%);
+  background: #333333;
+  opacity: 1;
+}
+
+.shapes-converged .square {
+  animation-delay: 0.1s;
+  transform: rotate(45deg);
+  width: 14px;
+  height: 14px;
+}
+
+.shapes-converged .circle {
+  animation-delay: 0.2s;
+  width: 16px;
+  height: 16px;
+}
+
+.shapes-converged .diamond {
+  animation-delay: 0.3s;
+  transform: rotate(45deg);
+  width: 14px;
+  height: 14px;
+}
+
+.shapes-converged .hexagon {
+  animation-delay: 0.4s;
+  margin: 0;
+  width: 14px;
+  height: 14px;
+  transform: rotate(45deg);
+  border: 1px solid #333333;
+}
+
+.shapes-converged .hexagon:before,
+.shapes-converged .hexagon:after {
+  display: none;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInShape {
+  0% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  100% {
+    opacity: 0.8;
+    transform: translateY(0);
+  }
 }
 
 @keyframes blink {
@@ -45,7 +236,20 @@
 
 /* Media queries for responsive design */
 @media (max-width: 480px) {
-  .loading-text {
-    padding: 0 16px;
+  .shape-container {
+    height: 50px;
+    margin-bottom: 15px;
   }
+  
+  .loading-text {
+    margin-bottom: 30px;
+  }
+}
+
+/* Specific adjustments for the shapes in converged state */
+.shapes-converged .square,
+.shapes-converged .diamond {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 } 
