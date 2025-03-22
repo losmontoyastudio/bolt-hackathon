@@ -5,7 +5,21 @@ export const PageContainer = () => {
   const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
-    // Function to handle scroll events
+    // Throttle function to limit how often a function can be called
+    const throttle = (func, limit) => {
+      let inThrottle;
+      return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+          func.apply(context, args);
+          inThrottle = true;
+          setTimeout(() => inThrottle = false, limit);
+        }
+      };
+    };
+    
+    // Function to handle active section changes
     const handleScroll = () => {
       const sections = ["about", "prizes", "sponsors", "judges", "faq"];
       const scrollPosition = window.scrollY + 100; // Offset for header
@@ -29,85 +43,103 @@ export const PageContainer = () => {
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element && scrollPosition >= element.offsetTop && scrollPosition < element.offsetTop + element.offsetHeight) {
-          setActiveSection(section);
+          // Only update if different - avoid unnecessary re-renders
+          if (section !== activeSection) {
+            setActiveSection(section);
+          }
           break;
         }
       }
     };
 
-    // Function to handle animation on scroll
-    const handleScrollAnimation = () => {
-      const sections = document.querySelectorAll('.section-animate');
-      
-      sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        
-        if (sectionTop < windowHeight * 0.85) { // Trigger animation when section is 85% into view
+    // Create throttled version of scroll handler
+    const throttledScroll = throttle(handleScroll, 100);
+
+    // Add scroll event listener for active section detection
+    window.addEventListener("scroll", throttledScroll);
+    
+    // Set up Intersection Observer for animation
+    const observerOptions = {
+      root: null, // Use the viewport
+      rootMargin: '0px',
+      threshold: 0.15 // Trigger when at least 15% of the element is visible
+    };
+    
+    const animationObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          // Don't unobserve - we want to trigger again if element goes out and back in view
+        }
+      });
+    }, observerOptions);
+    
+    // Observe all animation sections
+    document.querySelectorAll('.section-animate').forEach(section => {
+      animationObserver.observe(section);
+    });
+    
+    // Initial check for elements in view after a small delay
+    setTimeout(() => {
+      document.querySelectorAll('.section-animate').forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.85) {
           section.classList.add('in-view');
         }
       });
-    };
-
-    // Initial check for elements in view
-    setTimeout(() => {
-      handleScrollAnimation();
     }, 100);
-
-    // Add scroll event listeners
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("scroll", handleScrollAnimation);
     
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("scroll", handleScrollAnimation);
+      window.removeEventListener("scroll", throttledScroll);
+      // Disconnect the observer when the component unmounts
+      animationObserver.disconnect();
     };
-  }, []);
+  }, [activeSection]); // Add activeSection to dependency array
 
   return (
-    <div className="page-container">
+    <main className="page-container">
       <div className="main-container">
         <div className="landing-container-wrapper">
           <div className="landing-container">
-            <div className="header-section">
+            <header className="header-section">
               <div className="header-content">
                 <div className="logo-container">
-                  <a href="/" className="image-wrapper text-slide-animation">
+                  <a href="/" className="image-wrapper text-slide-animation" aria-label="Home">
                     <span>
                       <img
                         className="logo logo-image"
-                        alt="Logo"
+                        alt="Hackathon Logo"
                         src="https://c.animaapp.com/8VR2LaBZ/img/logo.svg"
                       />
                     </span>
                     <span className="hover-text">
                       <img
                         className="logo logo-image"
-                        alt="Logo"
+                        alt="Hackathon Logo"
                         src="https://c.animaapp.com/8VR2LaBZ/img/logo.svg"
                       />
                     </span>
                   </a>
                   <div className="date">2025 march</div>
                 </div>
-                <div className="navigation">
-                  <a href="#about" className={`nav-link text-slide-animation ${activeSection === "about" ? "active" : ""}`}>
+                <nav className="navigation" aria-label="Main navigation">
+                  <a href="#about" className={`nav-link text-slide-animation ${activeSection === "about" ? "active" : ""}`} aria-current={activeSection === "about" ? "page" : undefined}>
                     <span>about</span>
                     <span className="hover-text">about</span>
                   </a>
-                  <a href="#prizes" className={`nav-link text-slide-animation ${activeSection === "prizes" ? "active" : ""}`}>
+                  <a href="#prizes" className={`nav-link text-slide-animation ${activeSection === "prizes" ? "active" : ""}`} aria-current={activeSection === "prizes" ? "page" : undefined}>
                     <span>prizes</span>
                     <span className="hover-text">prizes</span>
                   </a>
-                  <a href="#sponsors" className={`nav-link text-slide-animation ${activeSection === "sponsors" ? "active" : ""}`}>
+                  <a href="#sponsors" className={`nav-link text-slide-animation ${activeSection === "sponsors" ? "active" : ""}`} aria-current={activeSection === "sponsors" ? "page" : undefined}>
                     <span>sponsors</span>
                     <span className="hover-text">sponsors</span>
                   </a>
-                  <a href="#judges" className={`nav-link text-slide-animation ${activeSection === "judges" ? "active" : ""}`}>
+                  <a href="#judges" className={`nav-link text-slide-animation ${activeSection === "judges" ? "active" : ""}`} aria-current={activeSection === "judges" ? "page" : undefined}>
                     <span>judges</span>
                     <span className="hover-text">judges</span>
                   </a>
-                  <a href="#faq" className={`nav-link text-slide-animation ${activeSection === "faq" ? "active" : ""}`}>
+                  <a href="#faq" className={`nav-link text-slide-animation ${activeSection === "faq" ? "active" : ""}`} aria-current={activeSection === "faq" ? "page" : undefined}>
                     <span>faq</span>
                     <span className="hover-text">faq</span>
                   </a>
@@ -115,9 +147,9 @@ export const PageContainer = () => {
                     <span>register</span>
                     <span className="hover-text">register</span>
                   </a>
-                </div>
+                </nav>
               </div>
-            </div>
+            </header>
             <div className="div">
               <div className="main-title">
                 <div className="title">the world's largest hackathon</div>
@@ -211,6 +243,6 @@ export const PageContainer = () => {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 };

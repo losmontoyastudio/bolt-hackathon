@@ -22,8 +22,10 @@
 }
 
 .theme-toggle-btn:focus-visible {
-  outline: 1px solid var(--typesignal);
-  outline-offset: 2px;
+  outline: 2px solid var(--typesignal);
+  outline-offset: 3px;
+  transform: scale(1.05);
+  box-shadow: 0 0 0 4px rgba(var(--typeinterface-rgb), 0.1);
 }
 
 .theme-toggle-icon {

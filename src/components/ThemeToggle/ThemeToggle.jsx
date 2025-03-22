@@ -1,9 +1,25 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
 
+// Feature detection for localStorage
+const supportsLocalStorage = () => {
+  try {
+    return 'localStorage' in window && window.localStorage !== null;
+  } catch (e) {
+    return false;
+  }
+};
+
 export const ThemeToggle = () => {
   // Check if user has a theme preference in localStorage
-  const savedTheme = localStorage.getItem("theme");
+  const getSavedTheme = () => {
+    if (supportsLocalStorage()) {
+      return localStorage.getItem("theme");
+    }
+    return null;
+  };
+  
+  const savedTheme = getSavedTheme();
   
   // Initialize state with saved theme or system preference
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -19,10 +35,14 @@ export const ThemeToggle = () => {
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.setAttribute("data-theme", "dark");
-      localStorage.setItem("theme", "dark");
+      if (supportsLocalStorage()) {
+        localStorage.setItem("theme", "dark");
+      }
     } else {
       document.documentElement.removeAttribute("data-theme");
-      localStorage.setItem("theme", "light");
+      if (supportsLocalStorage()) {
+        localStorage.setItem("theme", "light");
+      }
     }
   }, [isDarkMode]);
   

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 import './style.css';
 
-export const AspectRatioImage = ({ 
+export const AspectRatioImage = memo(({ 
   src, 
   alt, 
   aspectRatio = 1, // Default to 1:1 if not specified
@@ -17,8 +17,13 @@ export const AspectRatioImage = ({
         src={src}
         alt={alt}
         className="aspect-ratio-image"
+        loading="lazy"
+        decoding="async"
         {...props}
       />
     </div>
   );
-}; 
+});
+
+// Add displayName for better debugging
+AspectRatioImage.displayName = 'AspectRatioImage'; 
