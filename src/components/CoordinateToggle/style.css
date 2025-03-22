@@ -1,7 +1,7 @@
 .coordinate-toggle-btn {
   position: fixed;
-  bottom: 20px;
-  right: 64px; /* Position to the left of the theme toggle (40px width + 4px gap) */
+  bottom: 64px; /* Position above the theme toggle (40px height + 4px gap) */
+  right: 20px; /* Same right position as theme toggle */
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -57,6 +57,11 @@
   transition: border-color 0.3s ease, color 0.3s ease;
 }
 
+.coordinate-toggle-btn.active .xy-icon {
+  border-color: var(--typedata);
+  color: var(--typedata);
+}
+
 .coordinate-display {
   position: fixed;
   background-color: var(--bgsecondary); /* Same as UTC clock */
@@ -74,18 +79,20 @@
   box-shadow: var(--shadow-sm);
   width: fit-content;
   padding: 0;
+  overflow: hidden;
 }
 
 .coordinate-item {
   white-space: nowrap;
-  padding: 2px 4px;
+  padding: 0;
+  color: var(--typedata);
 }
 
 /* Media queries for responsive spacing - match theme toggle */
 @media (max-width: 768px) {
   .coordinate-toggle-btn {
-    bottom: 16px;
-    right: 60px; /* Update for the smaller gap (40px width + 4px gap) */
+    bottom: 60px; /* Update for the smaller gap (40px height + 4px gap) */
+    right: 16px; /* Match theme toggle position */
   }
 }
 
