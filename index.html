@@ -38,5 +38,51 @@
   <body>
     <div id="app"></div>
     <script type="module" src="./src/index.jsx"></script>
+    <script>
+      // Create and initialize the UTC clock
+      document.addEventListener('DOMContentLoaded', () => {
+        // Create clock container
+        const clockContainer = document.createElement('div');
+        clockContainer.id = 'utc-clock';
+        clockContainer.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          font-family: 'JetBrains Mono', monospace;
+          font-weight: 200;
+          font-size: 10px;
+          background-color: var(--bgsecondary);
+          opacity: 0.85;
+          color: var(--typeprimary);
+          z-index: 1000;
+          display: inline-block;
+          min-width: fit-content;
+          padding: 0;
+          line-height: 1;
+          transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+        `;
+        
+        // Create time display element
+        const timeDisplay = document.createElement('span');
+        clockContainer.appendChild(timeDisplay);
+        
+        // Append to body
+        document.body.appendChild(clockContainer);
+        
+        // Function to update time
+        function updateClock() {
+          const now = new Date();
+          const hours = String(now.getUTCHours()).padStart(2, '0');
+          const minutes = String(now.getUTCMinutes()).padStart(2, '0');
+          const seconds = String(now.getUTCSeconds()).padStart(2, '0');
+          
+          timeDisplay.textContent = `${hours}:${minutes}:${seconds} UTC`;
+        }
+        
+        // Update immediately and then every second
+        updateClock();
+        setInterval(updateClock, 1000);
+      });
+    </script>
   </body>
 </html>
