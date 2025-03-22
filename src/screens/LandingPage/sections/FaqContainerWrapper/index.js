@@ -1,0 +1,1 @@
+export { FaqContainerWrapper } from "./FaqContainerWrapper";

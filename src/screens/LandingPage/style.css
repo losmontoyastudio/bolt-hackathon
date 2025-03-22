@@ -1,0 +1,356 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&family=JetBrains+Mono:wght@200;300;400&display=swap');
+@import './animations.css';
+
+:root {
+  --h1-font: 300 120px/110% 'Space Grotesk', sans-serif;
+  --h2-font: 300 72px/110% 'Space Grotesk', sans-serif;
+  --h3-font: 300 48px/110% 'Space Grotesk', sans-serif;
+  --h4-font: 300 32px/112.5% 'Space Grotesk', sans-serif;
+  --h5-font: 300 24px/112.5% 'Space Grotesk', sans-serif;
+  --body-font: 300 16px/150% 'JetBrains Mono', monospace;
+  --nav-font: 200 16px/100% 'JetBrains Mono', monospace;
+  --button-font: 400 16px/100% 'JetBrains Mono', monospace;
+  --caption-font: 200 14px/143% 'JetBrains Mono', monospace;
+  --tech-spec-font: 200 10px/133% 'JetBrains Mono', monospace;
+}
+
+.landing-page {
+  align-items: center;
+  background-color: var(--bgprimary);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.centered-content {
+  max-width: 1200px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  scroll-padding-top: 100px;
+  font: var(--body-font);
+  letter-spacing: -0.5%;
+}
+
+h1 {
+  font: var(--h1-font);
+  letter-spacing: -1%;
+}
+
+h2 {
+  font: var(--h2-font);
+  letter-spacing: -1%;
+}
+
+h3 {
+  font: var(--h3-font);
+  letter-spacing: -1%;
+}
+
+h4 {
+  font: var(--h4-font);
+  letter-spacing: -1%;
+}
+
+h5 {
+  font: var(--h5-font);
+  letter-spacing: -1%;
+}
+
+.image-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-wrapper img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.image-wrapper::before,
+.image-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.image-wrapper::before {
+  background-image: inherit;
+  background-image: var(--image-url);
+}
+
+.image-wrapper::after {
+  background-image: inherit;
+  background-image: var(--image-url);
+}
+
+.image-wrapper:hover::before,
+.image-wrapper:hover::after {
+  opacity: 0.5;
+  animation-duration: 0.4s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.image-wrapper:hover::before {
+  animation-name: glitch1;
+  mix-blend-mode: color-dodge;
+}
+
+.image-wrapper:hover::after {
+  animation-name: glitch2;
+  mix-blend-mode: color-burn;
+}
+
+@keyframes glitch1 {
+  0% { 
+    filter: hue-rotate(0deg) grayscale(0) blur(0);
+    clip-path: inset(20% 0 20% 0);
+  }
+  50% { 
+    filter: hue-rotate(90deg) grayscale(0.5) blur(1px); 
+    clip-path: inset(10% 20% 50% 0);
+  }
+  100% { 
+    filter: hue-rotate(180deg) grayscale(0) blur(0); 
+    clip-path: inset(50% 0 0 20%);
+  }
+}
+
+@keyframes glitch2 {
+  0% { 
+    filter: invert(0.2) hue-rotate(180deg); 
+    clip-path: inset(30% 10% 10% 30%);
+  }
+  50% { 
+    filter: invert(0.5) hue-rotate(0deg); 
+    clip-path: inset(40% 30% 30% 0);
+  }
+  100% { 
+    filter: invert(0.2) hue-rotate(-180deg); 
+    clip-path: inset(10% 40% 40% 10%);
+  }
+}
+
+a, a:link, a:visited, a:hover, a:active {
+  cursor: pointer !important;
+  text-decoration: none;
+}
+
+/* Section spacing rules */
+.centered-content > div {
+  margin-bottom: 224px;
+}
+
+.centered-content > div + div {
+  margin-top: 224px; /* Default spacing for 1280px and above */
+}
+
+@media (max-width: 1280px) {
+  .centered-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  .centered-content > div {
+    margin-bottom: 224px;
+  }
+  .centered-content > div:last-child {
+    margin-bottom: 0;
+  }
+  .centered-content > div + div {
+    margin-top: 112px; /* Spacing between 768px and 1280px */
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 60px;
+  }
+  
+  h2 {
+    font-size: 48px;
+  }
+  
+  h3 {
+    font-size: 36px;
+  }
+  
+  h4 {
+    font-size: 24px;
+  }
+  
+  h5 {
+    font-size: 20px;
+  }
+
+  .centered-content > div {
+    margin-bottom: 112px;
+  }
+  .centered-content > div:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Fix any absolutely positioned text elements */
+  [class*="description-"],
+  [class*="title-"] > div {
+    position: static !important;
+    height: auto !important;
+    width: 100% !important;
+  }
+  
+  /* Fix container elements with fixed heights */
+  [class*="-container-wrapper"],
+  [class*="-container"] {
+    height: auto !important;
+    padding: 0 !important;
+  }
+  
+  /* Improve scroll behavior for anchor links */
+  html {
+    scroll-padding-top: 120px;
+  }
+  
+  /* Add specific container spacing for navigation */
+  .nav-container {
+    margin-top: 40px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 48px;
+  }
+  
+  h2 {
+    font-size: 36px;
+  }
+  
+  h3 {
+    font-size: 28px;
+  }
+  
+  h4 {
+    font-size: 20px;
+  }
+  
+  h5 {
+    font-size: 16px;
+  }
+
+  .centered-content {
+    padding: 0 20px;
+  }
+
+  .centered-content > div {
+    margin-bottom: 112px;
+  }
+
+  html {
+    scroll-padding-top: 100px;
+  }
+  
+  /* Add responsive text handling */
+  h1, h2, h3, h4, h5, p, span, div {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  /* Make sure images are responsive */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Common styles for all section headings at 1200px and below */
+@media (max-width: 1200px) {
+  /* Target all section headings */
+  .container .title-5,
+  .prizes-container .title-3,
+  .judges-container-wrapper .title-7,
+  .faq-container-wrapper .title-8,
+  .page-container .title-2 {
+    font-size: 48px; /* Consistent font size */
+    letter-spacing: -1%;
+    width: 100%;
+    position: relative; /* Change from absolute to relative for better responsive behavior */
+  }
+  
+  /* Container for section titles */
+  .container .title-4,
+  .prizes-container .div-wrapper,
+  .judges-container-wrapper .title-6,
+  .faq-container-wrapper .title-wrapper,
+  .page-container .title-wrapper {
+    height: auto; /* Allow height to adjust based on content */
+    width: 100%;
+    position: relative;
+  }
+  
+  /* Container for section descriptions */
+  .container .sponsors-description,
+  .prizes-container .prizes-description,
+  .judges-container-wrapper .judges-description,
+  .faq-container-wrapper .faq-description,
+  .page-container .about-description {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  
+  /* Text in descriptions */
+  .container .description-5,
+  .prizes-container .description-4,
+  .judges-container-wrapper .description-9,
+  .faq-container-wrapper .description-12,
+  .page-container .p {
+    width: 100%;
+    position: relative;
+    top: 0;
+  }
+}
+
+/* Further refine for smaller screens */
+@media (max-width: 768px) {
+  .container .title-5,
+  .prizes-container .title-3,
+  .judges-container-wrapper .title-7,
+  .faq-container-wrapper .title-8,
+  .page-container .title-2 {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container .title-5,
+  .prizes-container .title-3,
+  .judges-container-wrapper .title-7,
+  .faq-container-wrapper .title-8,
+  .page-container .title-2 {
+    font-size: 36px;
+  }
+}

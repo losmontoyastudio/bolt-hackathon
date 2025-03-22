@@ -1,0 +1,499 @@
+.container {
+  align-self: stretch;
+  position: relative;
+  width: 100%;
+}
+
+.container .sponsors-container {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.container .sponsors-section {
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 32px;
+  position: relative;
+  width: 100%;
+}
+
+.container .title-4 {
+  align-self: stretch;
+  height: 79px;
+  position: relative;
+  width: 100%;
+}
+
+.container .title-5 {
+  color: var(--typeprimary);
+  font-family: var(--h-2-font-family);
+  font-size: var(--h-2-font-size);
+  font-style: var(--h-2-font-style);
+  font-weight: var(--h-2-font-weight);
+  left: 0;
+  letter-spacing: var(--h-2-letter-spacing);
+  line-height: var(--h-2-line-height);
+  position: absolute;
+  top: -1px;
+  width: 100%;
+}
+
+.container .sponsors-description {
+  height: 96px;
+  position: relative;
+  width: 540px;
+}
+
+.container .description-5 {
+  color: transparent;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size);
+  font-style: var(--body-font-style);
+  font-weight: var(--body-font-weight);
+  left: 0;
+  letter-spacing: var(--body-letter-spacing);
+  line-height: var(--body-line-height);
+  position: absolute;
+  top: -1px;
+  width: 540px;
+}
+
+.container .text-wrapper-14 {
+  color: #333333;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size);
+  font-style: var(--body-font-style);
+  font-weight: var(--body-font-weight);
+  letter-spacing: var(--body-letter-spacing);
+  line-height: var(--body-line-height);
+}
+
+.container .text-wrapper-15 {
+  color: #0055ff;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size);
+  font-style: var(--body-font-style);
+  font-weight: var(--body-font-weight);
+  letter-spacing: var(--body-letter-spacing);
+  line-height: var(--body-line-height);
+  vertical-align: baseline;
+}
+
+.container .sponsors-list {
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  gap: 64px;
+  position: relative;
+  width: 100%;
+}
+
+.container .sponsor-tier {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  position: relative;
+  width: 65%;
+}
+
+.container .div-7 {
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+  width: 100%;
+}
+
+.container .div-8 {
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  width: 100%;
+}
+
+.container .header-texts {
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+}
+
+.container .english-header {
+  color: var(--typecaption);
+  flex: 1;
+  font-family: var(--captions-font-family);
+  font-size: var(--captions-font-size);
+  font-style: var(--captions-font-style);
+  font-weight: var(--captions-font-weight);
+  letter-spacing: var(--captions-letter-spacing);
+  line-height: var(--captions-line-height);
+  margin-top: -1.00px;
+  position: relative;
+}
+
+.container .japanese-header {
+  color: var(--typecaption);
+  font-family: var(--captions-font-family);
+  font-size: var(--captions-font-size);
+  font-style: var(--captions-font-style);
+  font-weight: var(--captions-font-weight);
+  letter-spacing: var(--captions-letter-spacing);
+  line-height: var(--captions-line-height);
+  margin-top: -1.00px;
+  position: relative;
+  text-align: right;
+  width: 68px;
+}
+
+.container .div-wrapper-2 {
+  align-self: stretch;
+  height: 13px;
+  position: relative;
+  width: 100%;
+}
+
+.container .description-6 {
+  color: var(--typebody);
+  font-family: var(--technical-specifications-font-family);
+  font-size: var(--technical-specifications-font-size);
+  font-style: var(--technical-specifications-font-style);
+  font-weight: var(--technical-specifications-font-weight);
+  left: 0;
+  letter-spacing: var(--technical-specifications-letter-spacing);
+  line-height: var(--technical-specifications-line-height);
+  position: absolute;
+  text-align: justify;
+  top: -1px;
+  width: 100%;
+}
+
+.container .sponsor-names {
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  gap: 16px;
+  position: relative;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.container .sponsor {
+  background-color: var(--bgsecondary);
+  position: relative;
+  width: calc(33.33% - 11px);
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s ease;
+  padding: 0;
+  box-sizing: border-box;
+  height: auto;
+  min-height: 0;
+}
+
+.container .sponsor:hover {
+  background-color: #f0f0f0;
+}
+
+.container .submission-deadline-2 {
+  color: transparent;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 200;
+  letter-spacing: normal;
+  line-height: 1.33;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  margin: 0;
+}
+
+/* Add specific style to override browser defaults for paragraph tags */
+.container .sponsor p {
+  margin: 0;
+  padding: 0;
+}
+
+.container .sponsor-call-to {
+  background-color: var(--bgsecondary);
+  display: block;
+  height: 100%;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.container .description-7 {
+  color: #333333;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  font-weight: 200;
+  line-height: 1.33;
+  margin: 0;
+  padding: 0;
+}
+
+.container .text-wrapper-18 {
+  color: #555555;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  font-weight: 200;
+  line-height: 1.33;
+  margin-bottom: 0;
+}
+
+.container .text-wrapper-16 {
+  color: #0055ff;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  font-weight: 200;
+  line-height: 1.33;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+}
+
+.container .text-wrapper-17 {
+  color: #333333;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  font-weight: 200;
+  line-height: 1.33;
+  display: inline;
+  padding: 0;
+  margin: 0;
+}
+
+.container .sponsor-terms {
+  align-self: stretch;
+  height: 143px;
+  position: relative;
+  width: 100%;
+}
+
+.container .description-8 {
+  color: var(--typebody);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 200;
+  letter-spacing: normal;
+  line-height: 1.33;
+  position: absolute;
+  top: -1px;
+  width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+  hyphens: auto;
+  max-width: 100%;
+}
+
+.container .divider {
+  align-self: stretch;
+  height: 1px;
+  position: relative;
+  width: 100%;
+}
+
+.container .submission-deadline-3 {
+  color: var(--typedata);
+  font-family: var(--technical-specifications-font-family);
+  font-size: var(--technical-specifications-font-size);
+  font-style: var(--technical-specifications-font-style);
+  font-weight: var(--technical-specifications-font-weight);
+  left: 0;
+  letter-spacing: var(--technical-specifications-letter-spacing);
+  line-height: var(--technical-specifications-line-height);
+  position: absolute;
+  top: -1px;
+  width: 100%;
+}
+
+.container .sponsor-details {
+  align-items: flex-start;
+  background-color: var(--bgsecondary);
+  display: flex;
+  flex-direction: column;
+  gap: 269px;
+  position: relative;
+  width: 35%;
+}
+
+@media (max-width: 1280px) {
+  .container .sponsors-container {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .container .sponsors-list {
+    gap: 64px;
+  }
+
+  .container .sponsor-tier {
+    width: 65%;
+  }
+  
+  .container .sponsor-details {
+    width: 35%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container .sponsors-container {
+    padding: 0;
+  }
+
+  .container .sponsors-list {
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  .container .sponsor-tier,
+  .container .sponsors-description,
+  .container .sponsor-details {
+    width: 100%;
+  }
+  
+  .container .sponsor {
+    width: calc(50% - 8px);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 100%;
+  }
+  
+  .container .sponsors-container {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 16px;
+  }
+  
+  .container .sponsors-section {
+    width: 100%;
+    padding: 0;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .container .title-4 {
+    width: 100%;
+    height: auto;
+    position: relative;
+    margin-bottom: 16px;
+  }
+
+  .container .title-5 {
+    font-size: 36px;
+    position: relative;
+    width: 100%;
+    height: auto;
+    text-align: left;
+  }
+
+  .container .sponsors-description {
+    height: auto;
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  }
+  
+  .container .description-5 {
+    position: relative;
+    width: 100%;
+    height: auto;
+    top: 0;
+    text-align: left;
+  }
+   
+  .container .japanese-header {
+    text-align: left;
+    width: auto;
+  }
+   
+  .container .header-texts {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  
+  .container .sponsors-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 48px;
+    align-items: flex-start;
+  }
+  
+  .container .sponsor-tier,
+  .container .sponsor-details {
+    width: 100%;
+    margin-bottom: 24px;
+    align-items: flex-start;
+  }
+  
+  .container .sponsor {
+    width: 100%;
+    margin-bottom: 16px;
+    text-align: left;
+  }
+
+  .container .sponsor-names {
+    gap: 16px;
+    align-items: flex-start;
+  }
+  
+  .container .text-wrapper-14,
+  .container .text-wrapper-15 {
+    text-align: left;
+  }
+  
+  .container .sponsor-call-to,
+  .container .sponsor-terms {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .container .description-7,
+  .container .description-8 {
+    width: 100%;
+    position: relative;
+    height: auto;
+    top: 0;
+  }
+}

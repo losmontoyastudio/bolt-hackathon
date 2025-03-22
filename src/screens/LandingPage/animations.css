@@ -1,0 +1,114 @@
+/* Text slide animation for interactive elements */
+.text-slide-animation {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+/* Special handling for image wrappers */
+.image-wrapper.text-slide-animation {
+  overflow: hidden;
+  height: auto; /* Maintain natural height */
+  position: relative;
+  display: inline-block;
+}
+
+.text-slide-animation span {
+  display: inline-block;
+  position: relative;
+  transition: transform 0.3s ease-out;
+}
+
+.text-slide-animation .hover-text {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-out;
+  pointer-events: none;
+}
+
+.text-slide-animation:hover span {
+  transform: translateY(-100%);
+}
+
+.text-slide-animation:hover .hover-text {
+  transform: translateY(0);
+}
+
+.image-wrapper.text-slide-animation span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-wrapper.text-slide-animation img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Apply to specific elements */
+.page-container .nav-link,
+.text-wrapper-2, /* Main X link */
+.text-wrapper-15, /* X link */
+.text-wrapper-16, /* Sponsor X handles and sign up here */
+.text-wrapper-20, /* X link in judges section */
+.text-wrapper-21, /* Judge X handles */
+.image-wrapper.text-slide-animation, /* Logo and avatar */
+.footer-links a /* Terms, privacy, contact links */ {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+/* Fix for bolt logo animation */
+.logo-container .image-wrapper.text-slide-animation {
+  display: block;
+  height: 16px;
+  width: 37.26px;
+  overflow: hidden;
+}
+
+.logo-container .image-wrapper.text-slide-animation span,
+.footer-info .image-wrapper.text-slide-animation span {
+  height: 100%;
+  width: 100%;
+}
+
+.logo-container .image-wrapper.text-slide-animation img,
+.footer-info .image-wrapper.text-slide-animation img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+/* Special handling for register nav link */
+.page-container .nav-link.register.text-slide-animation .hover-text {
+  text-align: right;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .page-container .nav-link.register.text-slide-animation .hover-text {
+    text-align: left;
+    justify-content: flex-start;
+  }
+}
+
+/* Special handling for X link in main text */
+.text-wrapper-2.text-slide-animation {
+  vertical-align: baseline;
+}
+
+.text-wrapper-2.text-slide-animation span {
+  vertical-align: baseline;
+  line-height: inherit;
+}
+
+.text-wrapper-2.text-slide-animation .hover-text {
+  vertical-align: baseline;
+  line-height: inherit;
+} 

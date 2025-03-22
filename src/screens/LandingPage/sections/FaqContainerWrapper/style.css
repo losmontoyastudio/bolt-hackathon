@@ -1,0 +1,296 @@
+.FAQ-container-wrapper {
+  align-self: stretch;
+  height: auto;
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.FAQ-container-wrapper .FAQ-container {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.FAQ-container-wrapper .FAQ-section {
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+  width: 100%;
+}
+
+.FAQ-container-wrapper .FAQ-header {
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  width: 100%;
+}
+
+.FAQ-container-wrapper .title-8 {
+  align-self: stretch;
+  height: 79px;
+  position: relative;
+  width: 100%;
+}
+
+.FAQ-container-wrapper .title-9 {
+  color: var(--typeprimary);
+  font: var(--h2-font);
+  letter-spacing: -1%;
+  left: 0;
+  position: absolute;
+  text-align: center;
+  top: -1px;
+  width: 100%;
+}
+
+.FAQ-container-wrapper .japanese-title {
+  align-self: stretch;
+  height: 20px;
+  position: relative;
+  width: 100%;
+}
+
+.FAQ-container-wrapper .japanese-header-3 {
+  color: var(--typecaption);
+  font: var(--caption-font);
+  left: 0;
+  position: absolute;
+  text-align: center;
+  top: -1px;
+  width: 100%;
+}
+
+.FAQ-container-wrapper .FAQ-description {
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  width: 100%;
+}
+
+.FAQ-container-wrapper .FAQ-intro {
+  align-self: stretch;
+  height: 24px;
+  position: relative;
+  width: 100%;
+}
+
+.FAQ-container-wrapper .description-12 {
+  color: var(--typebody);
+  font: var(--body-font);
+  letter-spacing: -0.5%;
+  left: 0;
+  position: absolute;
+  text-align: center;
+  top: -1px;
+  width: 100%;
+}
+
+.FAQ-container-wrapper .FAQ-update {
+  align-self: stretch;
+  height: 26px;
+  position: relative;
+  width: 100%;
+}
+
+.FAQ-container-wrapper .description-13 {
+  color: var(--typebody);
+  font: var(--tech-spec-font);
+  left: 0;
+  position: absolute;
+  text-align: center;
+  top: -1px;
+  width: 100%;
+}
+
+.FAQ-container-wrapper .description-14 {
+  color: var(--typebody);
+  font: var(--tech-spec-font);
+  left: 0;
+  position: absolute;
+  text-align: center;
+  top: 12px;
+  width: 100%;
+}
+
+.FAQ-container-wrapper .FAQ-list {
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 64px;
+  position: relative;
+  width: 100%;
+}
+
+.FAQ-container-wrapper .frame-3 {
+  align-items: flex-start;
+  align-self: stretch;
+  background-color: var(--bgsecondary);
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  width: 100%;
+}
+
+.FAQ-container-wrapper .english-header-wrapper {
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.FAQ-container-wrapper .english-header-3 {
+  align-self: stretch;
+  color: var(--typecaption);
+  font: var(--caption-font);
+  margin-top: -1.00px;
+  position: relative;
+  text-align: center;
+}
+
+.FAQ-container-wrapper .english-header-4 {
+  align-self: stretch;
+  color: var(--typebody);
+  font: var(--caption-font);
+  margin-top: -1.00px;
+  position: relative;
+  text-align: center;
+}
+
+.FAQ-container-wrapper .english-header-5 {
+  align-self: stretch;
+  color: transparent;
+  font: var(--caption-font);
+  margin-top: -1.00px;
+  position: relative;
+  text-align: center;
+}
+
+.FAQ-container-wrapper .text-wrapper-23 {
+  color: #333333;
+}
+
+.FAQ-container-wrapper .text-wrapper-24 {
+  color: #0055ff;
+  cursor: pointer;
+}
+
+@media (max-width: 1280px) {
+  .FAQ-container-wrapper .FAQ-container {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .FAQ-container-wrapper .FAQ-container {
+    max-width: 100%;
+    padding: 0 24px;
+  }
+
+  .FAQ-container-wrapper .FAQ-description,
+  .FAQ-container-wrapper .FAQ-intro,
+  .FAQ-container-wrapper .FAQ-update,
+  .FAQ-container-wrapper .description-12,
+  .FAQ-container-wrapper .description-13,
+  .FAQ-container-wrapper .description-14 {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .FAQ-container-wrapper .description-12,
+  .FAQ-container-wrapper .description-13,
+  .FAQ-container-wrapper .description-14 {
+    position: static;
+  }
+
+  .FAQ-container-wrapper .FAQ-list {
+    gap: 32px;
+  }
+
+  .FAQ-container-wrapper .frame-3 {
+    padding: 24px;
+  }
+
+  .FAQ-container-wrapper .title-9 {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .FAQ-container-wrapper .title-9 {
+    font-size: 36px;
+  }
+
+  .FAQ-container-wrapper .FAQ-container {
+    padding: 0 16px;
+  }
+
+  .FAQ-container-wrapper .frame-3 {
+    padding: 16px;
+  }
+
+  .FAQ-container-wrapper .FAQ-list {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 340px) {
+  .FAQ-container-wrapper .FAQ-container {
+    padding: 0 16px;
+  }
+
+  .FAQ-container-wrapper .FAQ-description,
+  .FAQ-container-wrapper .description-12 {
+    width: 100%;
+    position: relative;
+  }
+
+  .FAQ-container-wrapper .title-8 {
+    font-size: 36px;
+    position: relative;
+  }
+
+  .FAQ-container-wrapper .FAQ-items {
+    gap: 16px;
+  }
+
+  .FAQ-container-wrapper .FAQ-item {
+    padding: 16px 0;
+  }
+
+  .FAQ-container-wrapper .question {
+    font-size: 16px;
+  }
+
+  .FAQ-container-wrapper .answer {
+    font-size: 14px;
+  }
+}
