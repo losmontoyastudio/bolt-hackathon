@@ -182,11 +182,11 @@
 }
 
 .page-container .span {
-  color: #333333;
+  color: var(--typebody);
 }
 
 .page-container .text-wrapper-2 {
-  color: #0055ff;
+  color: var(--typebody);
   cursor: pointer;
   vertical-align: baseline;
   display: inline-flex;
@@ -278,11 +278,11 @@
 }
 
 .page-container .text-wrapper-3 {
-  color: #333333;
+  color: var(--typebody);
 }
 
 .page-container .text-wrapper-4 {
-  color: #ff0000;
+  color: var(--typedata);
 }
 
 .page-container .about-details {
@@ -292,7 +292,7 @@
   gap: 32px;
   position: relative;
   width: 100%;
-  background: #F5F5F5;
+  background: var(--bgsecondary);
 }
 
 .page-container .description-2,
@@ -305,16 +305,16 @@
 }
 
 .page-container .text-wrapper-5 {
-  color: #555555;
+  color: var(--typedata);
 }
 
 .page-container .text-wrapper-6 {
-  color: #333333;
+  color: var(--typebody);
   font: var(--tech-spec-font);
 }
 
 .page-container .text-wrapper-7 {
-  color: #ff0000;
+  color: var(--typedata);
   font: var(--tech-spec-font);
 }
 
@@ -595,7 +595,6 @@
     gap: 24px;
   }
 }
-
 .page-container .image-wrapper {
   height: 16px;
   width: 37.26px;
@@ -612,3 +611,28 @@
   overflow: hidden;
   position: relative;
 }
+
+.page-container .div-wrapper span {
+  color: var(--typebody);
+}
+
+.page-container .div-wrapper a {
+  color: var(--typesignal);
+}
+
+.page-container .hackathon-description {
+  background: var(--bgsecondary);
+}
+
+.page-container .join-description {
+  color: var(--typebody-secondary);
+}
+
+.page-container .join-description-2 {
+  color: var(--typebody);
+}
+
+.page-container .join-description-2 span {
+  color: var(--typedata);
+}
+

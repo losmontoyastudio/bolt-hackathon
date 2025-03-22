@@ -64,11 +64,11 @@
 }
 
 .frame-wrapper .text-wrapper-25 {
-  color: #333333;
+  color: var(--typebody);
 }
 
 .frame-wrapper .text-wrapper-26 {
-  color: #0055ff;
+  color: var(--typesignal);
   cursor: pointer;
 }
 
@@ -151,6 +151,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.frame-wrapper .text-2 {
+  color: var(--typebody);
+}
+
+.frame-wrapper a {
+  color: var(--typesignal);
 }
 
 @media (max-width: 1280px) {

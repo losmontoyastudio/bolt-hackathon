@@ -37,7 +37,7 @@ export const FrameWrapper = () => {
           <div className="footer-info">
             <a href="/" className="image-wrapper">
               <img
-                className="logo-2"
+                className="logo-2 logo-image"
                 alt="Logo"
                 src="https://c.animaapp.com/8VR2LaBZ/img/logo-1.svg"
               />

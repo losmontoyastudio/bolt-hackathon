@@ -74,11 +74,11 @@
 }
 
 .judges-container-wrapper .text-wrapper-19 {
-  color: #333333;
+  color: var(--typebody);
 }
 
 .judges-container-wrapper .text-wrapper-20 {
-  color: #0055ff;
+  color: var(--typesignal);
   cursor: pointer;
 }
 
@@ -232,14 +232,14 @@
 }
 
 .judges-container-wrapper .text-wrapper-21 {
-  color: #0055ff;
+  color: var(--typesignal);
   cursor: pointer;
   display: inline-block;
   line-height: 1.2;
 }
 
 .judges-container-wrapper .text-wrapper-22 {
-  color: #333333;
+  color: var(--typebody);
   display: inline-block;
   line-height: 1.2;
 }
@@ -393,4 +393,20 @@
     animation: cycleImageClone 2.5s linear infinite;
     filter: saturate(2) contrast(1.1);
   }
+}
+
+[class*="title"] {
+  color: var(--typebody);
+}
+
+.judges-container-wrapper a {
+  color: var(--typesignal);
+}
+
+.judges-container-wrapper a span {
+  color: var(--typesignal);
+}
+
+.judges-container-wrapper p {
+  color: var(--typebody);
 }

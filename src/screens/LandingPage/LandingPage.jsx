@@ -6,12 +6,14 @@ import { JudgesContainerWrapper } from "./sections/JudgesContainerWrapper";
 import { PageContainer } from "./sections/PageContainer";
 import { PrizesContainer } from "./sections/PrizesContainer";
 import { LoadingAnimation } from "../../components/LoadingAnimation";
+import { ThemeToggle } from "../../components/ThemeToggle";
 import "./style.css";
 
 export const LandingPage = () => {
   return (
     <div className="landing-page">
       <LoadingAnimation />
+      <ThemeToggle />
       <div className="centered-content">
         <PageContainer />
         <PrizesContainer />

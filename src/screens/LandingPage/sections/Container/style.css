@@ -32,10 +32,11 @@
   height: 79px;
   position: relative;
   width: 100%;
+  color: var(--typebody);
 }
 
 .container .title-5 {
-  color: var(--typeprimary);
+  color: var(--typebody);
   font-family: var(--h-2-font-family);
   font-size: var(--h-2-font-size);
   font-style: var(--h-2-font-style);
@@ -54,8 +55,12 @@
   width: 540px;
 }
 
+.container .sponsors-description a {
+  color: var(--typesignal);
+}
+
 .container .description-5 {
-  color: transparent;
+  color: var(--typebody);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size);
   font-style: var(--body-font-style);
@@ -69,7 +74,7 @@
 }
 
 .container .text-wrapper-14 {
-  color: #333333;
+  color: var(--typebody);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size);
   font-style: var(--body-font-style);
@@ -79,7 +84,7 @@
 }
 
 .container .text-wrapper-15 {
-  color: #0055ff;
+  color: var(--typesignal);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size);
   font-style: var(--body-font-style);
@@ -216,7 +221,8 @@
 }
 
 .container .sponsor:hover {
-  background-color: #f0f0f0;
+  background-color: var(--bgsecondary);
+  filter: brightness(0.95);
 }
 
 .container .submission-deadline-2 {
@@ -253,7 +259,7 @@
 }
 
 .container .description-7 {
-  color: #333333;
+  color: var(--typebody);
   font-family: "JetBrains Mono", monospace;
   font-size: 10px;
   font-weight: 200;
@@ -263,7 +269,7 @@
 }
 
 .container .text-wrapper-18 {
-  color: #555555;
+  color: var(--typebody-secondary);
   font-family: "JetBrains Mono", monospace;
   font-size: 10px;
   font-weight: 200;
@@ -272,7 +278,7 @@
 }
 
 .container .text-wrapper-16 {
-  color: #0055ff;
+  color: var(--typesignal);
   font-family: "JetBrains Mono", monospace;
   font-size: 10px;
   font-weight: 200;
@@ -283,7 +289,7 @@
 }
 
 .container .text-wrapper-17 {
-  color: #333333;
+  color: var(--typebody);
   font-family: "JetBrains Mono", monospace;
   font-size: 10px;
   font-weight: 200;
@@ -347,6 +353,18 @@
   gap: 269px;
   position: relative;
   width: 35%;
+}
+
+.container .text-wrapper-3 {
+  background-color: var(--bgsecondary);
+}
+
+.container .sponsors-description-3 {
+  color: var(--typebody-secondary);
+}
+
+.container .sponsors-description-3 a {
+  color: var(--typesignal);
 }
 
 @media (max-width: 1280px) {

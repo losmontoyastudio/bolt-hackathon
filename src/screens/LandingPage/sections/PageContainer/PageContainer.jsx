@@ -75,14 +75,14 @@ export const PageContainer = () => {
                   <a href="/" className="image-wrapper text-slide-animation">
                     <span>
                       <img
-                        className="logo"
+                        className="logo logo-image"
                         alt="Logo"
                         src="https://c.animaapp.com/8VR2LaBZ/img/logo.svg"
                       />
                     </span>
                     <span className="hover-text">
                       <img
-                        className="logo"
+                        className="logo logo-image"
                         alt="Logo"
                         src="https://c.animaapp.com/8VR2LaBZ/img/logo.svg"
                       />
