@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200&display=swap');
 
+/* Disable scrolling when loading animation is active */
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
+  position: fixed;
+  width: 100%;
+}
+
 .loading-animation {
   position: fixed;
   top: 0;

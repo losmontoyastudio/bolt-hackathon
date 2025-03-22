@@ -11,6 +11,23 @@ export const LoadingAnimation = () => {
   const [shapesConverged, setShapesConverged] = useState(false);
   const animationRef = useRef(null);
 
+  // Add class to body to disable scrolling when component mounts
+  useEffect(() => {
+    document.body.classList.add('no-scroll');
+    
+    // Remove class when component unmounts
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, []);
+
+  // Remove no-scroll class when animation completes
+  useEffect(() => {
+    if (!visible) {
+      document.body.classList.remove('no-scroll');
+    }
+  }, [visible]);
+
   const lines = [
     "loading the world's largest hackathon...",
     "assembling prizes...",
