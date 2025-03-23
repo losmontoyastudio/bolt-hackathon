@@ -12,25 +12,68 @@ export const LoadingAnimation = () => {
   const animationRef = useRef(null);
   // Use ref to store timeouts for easier cleanup
   const timersRef = useRef([]);
+  // Add ref to track scroll lock state
+  const scrollLockRestoredRef = useRef(false);
+  // Add ref to track the animation start time
+  const startTimeRef = useRef(Date.now());
+
+  // Function to safely remove scroll lock
+  const removeScrollLock = useCallback(() => {
+    if (document.body.classList.contains('no-scroll') && !scrollLockRestoredRef.current) {
+      document.body.classList.remove('no-scroll');
+      scrollLockRestoredRef.current = true;
+    }
+  }, []);
 
   // Add class to body to disable scrolling when component mounts
   useEffect(() => {
     document.body.classList.add('no-scroll');
+    scrollLockRestoredRef.current = false;
+    startTimeRef.current = Date.now();
+    
+    // Failsafe: Set maximum time for scroll lock (10 seconds)
+    const maxScrollLockTimeout = setTimeout(() => {
+      console.log("Maximum scroll lock time reached, restoring scroll");
+      removeScrollLock();
+    }, 10000);
+    
+    timersRef.current.push(maxScrollLockTimeout);
     
     // Remove class when component unmounts
     return () => {
-      document.body.classList.remove('no-scroll');
+      removeScrollLock();
       // Clear any pending timeouts
       timersRef.current.forEach(timer => clearTimeout(timer));
+      timersRef.current = [];
     };
-  }, []);
+  }, [removeScrollLock]);
 
   // Remove no-scroll class when animation completes
   useEffect(() => {
     if (!visible) {
-      document.body.classList.remove('no-scroll');
+      removeScrollLock();
     }
-  }, [visible]);
+  }, [visible, removeScrollLock]);
+
+  // Add failsafe: Listen for user interaction to release scroll lock if needed
+  useEffect(() => {
+    const handleUserInteraction = () => {
+      // If animation has been visible too long (5+ seconds) or has errors, force scroll restoration
+      if (visible && Date.now() - startTimeRef.current > 5000) {
+        removeScrollLock();
+      }
+    };
+    
+    window.addEventListener('click', handleUserInteraction, { passive: true });
+    window.addEventListener('keydown', handleUserInteraction, { passive: true });
+    window.addEventListener('touchstart', handleUserInteraction, { passive: true });
+    
+    return () => {
+      window.removeEventListener('click', handleUserInteraction);
+      window.removeEventListener('keydown', handleUserInteraction);
+      window.removeEventListener('touchstart', handleUserInteraction);
+    };
+  }, [visible, removeScrollLock]);
 
   // Cache lines to prevent recreating array on each render
   const lines = useMemo(() => [
@@ -107,6 +150,8 @@ export const LoadingAnimation = () => {
       // Fade out animation after all lines are typed
       const fadeOutTimer = setTimeout(() => {
         setVisible(false);
+        // Make sure scroll is restored when animation finishes
+        removeScrollLock();
       }, 600); // Shorter fade out time
       
       // Store timer for cleanup
@@ -117,7 +162,7 @@ export const LoadingAnimation = () => {
         clearTimeout(fadeOutTimer);
       };
     }
-  }, [currentLineIndex, currentText, lines, updateAnimation]);
+  }, [currentLineIndex, currentText, lines, updateAnimation, removeScrollLock]);
 
   // Memoize shape rendering to prevent recalculation
   const renderShape = useCallback(() => {
