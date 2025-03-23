@@ -212,6 +212,9 @@
   bottom: 100px;
   width: 75px;
   animation: floatArrow 3s ease-in-out infinite;
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
 }
 
 .page-container .continuation {
@@ -655,5 +658,16 @@
 
 .page-container .join-description-2 span {
   color: var(--typedata);
+}
+
+/* Add smooth scrolling behavior to the html element */
+html {
+  scroll-behavior: smooth;
+}
+
+.page-container .arrow:hover {
+  opacity: 0.8;
+  transform: translateY(5px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 

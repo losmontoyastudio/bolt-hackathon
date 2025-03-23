@@ -1,7 +1,7 @@
 .coordinate-toggle-btn {
   position: fixed;
-  bottom: 64px; /* Position above the theme toggle (40px height + 4px gap) */
-  right: 20px; /* Same right position as theme toggle */
+  bottom: 64px; /* Position just above theme toggle */
+  right: 20px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -15,7 +15,8 @@
   padding: 0;
   /* Only transition theme-related properties */
   transition: background-color var(--transition-speed) ease, 
-              box-shadow var(--transition-speed) ease;
+              box-shadow var(--transition-speed) ease,
+              bottom var(--transition-speed) ease; /* Add transition for bottom position */
   /* Separate transition for interaction */
   transform: scale(1);
   transition-property: transform;
@@ -24,7 +25,7 @@
   box-shadow: var(--shadow-sm);
   /* Add containment to limit repaints */
   contain: layout;
-  will-change: background-color, box-shadow;
+  will-change: background-color, box-shadow, bottom;
 }
 
 .coordinate-toggle-btn:hover {
@@ -42,6 +43,17 @@
 
 .coordinate-toggle-btn.active {
   background-color: var(--bgsecondary);
+}
+
+/* TRON theme specific styles */
+[data-theme="tron"] .coordinate-toggle-btn {
+  bottom: 108px; /* Expanded spacing only in TRON theme */
+  border: 1px solid var(--typeinterface);
+}
+
+[data-theme="tron"] .coordinate-toggle-btn:hover {
+  box-shadow: 0 0 8px rgba(125, 253, 254, 0.4),
+              0 0 16px rgba(125, 253, 254, 0.2);
 }
 
 .coordinate-toggle-icon {
@@ -83,24 +95,24 @@
 
 .coordinate-display {
   position: fixed;
-  background-color: var(--bgsecondary); /* Same as UTC clock */
-  opacity: 0.85; /* Same as UTC clock */
-  color: var(--typeprimary); /* Same as UTC clock */
+  background-color: var(--bgsecondary);
+  opacity: 0.85;
+  color: var(--typeprimary);
   font-family: "JetBrains Mono", monospace;
   font-weight: 200;
-  font-size: 10px; /* Same as UTC clock */
+  font-size: 10px;
   pointer-events: none;
-  z-index: 1000; /* Same as UTC clock */
+  z-index: 1000;
   display: flex;
   flex-direction: column;
-  line-height: 1; /* Same as UTC clock */
+  line-height: 1;
   /* Only transition theme-dependent properties */
   transition: background-color var(--transition-speed) ease, 
               color var(--transition-speed) ease, 
               box-shadow var(--transition-speed) ease;
   box-shadow: var(--shadow-sm);
   width: fit-content;
-  padding: 0;
+  padding: 4px 8px;
   overflow: hidden;
   /* Add containment for better performance */
   contain: content;
@@ -119,18 +131,22 @@
 /* Media queries for responsive spacing - match theme toggle */
 @media (max-width: 768px) {
   .coordinate-toggle-btn {
-    bottom: 60px; /* Update for the smaller gap (40px height + 4px gap) */
-    right: 16px; /* Match theme toggle position */
+    bottom: 60px;
+    right: 16px;
+  }
+  
+  [data-theme="tron"] .coordinate-toggle-btn {
+    bottom: 104px;
   }
 }
 
-/* Hide coordinate toggle and display on mobile devices */
 @media (max-width: 480px) {
   .coordinate-toggle-btn {
-    display: none;
+    bottom: 56px;
+    right: 12px;
   }
   
-  .coordinate-display {
-    display: none;
+  [data-theme="tron"] .coordinate-toggle-btn {
+    bottom: 100px;
   }
 } 

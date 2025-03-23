@@ -1,4 +1,5 @@
 import React from "react";
+import { TronSoundLink } from "../../../../components/TronSoundLink";
 import "./style.css";
 
 export const Container = () => {
@@ -19,7 +20,9 @@ export const Container = () => {
                 development. first announced on{" "}
               </span>
 
-              <a href="https://x.com/boltdotnew" target="_blank" rel="noopener noreferrer" className="text-wrapper-15" style={{ verticalAlign: 'baseline', display: 'inline' }}>x</a>
+              <TronSoundLink>
+                <a href="https://x.com/boltdotnew" target="_blank" rel="noopener noreferrer" className="text-wrapper-15" style={{ verticalAlign: 'baseline', display: 'inline' }}>x</a>
+              </TronSoundLink>
 
               <span className="text-wrapper-14">.</span>
             </p>
@@ -45,61 +48,77 @@ export const Container = () => {
               </div>
 
               <div className="sponsor-names">
-                <a href="https://x.com/supabase" target="_blank" rel="noopener noreferrer" className="sponsor">
-                  <p className="submission-deadline-2">
-                    <span className="text-wrapper-16">@supabase</span>
-                    <span className="text-wrapper-17">database</span>
-                  </p>
-                </a>
+                <TronSoundLink>
+                  <a href="https://x.com/supabase" target="_blank" rel="noopener noreferrer" className="sponsor">
+                    <p className="submission-deadline-2">
+                      <span className="text-wrapper-16">@supabase</span>
+                      <span className="text-wrapper-17">database</span>
+                    </p>
+                  </a>
+                </TronSoundLink>
 
-                <a href="https://x.com/netlify" target="_blank" rel="noopener noreferrer" className="sponsor">
-                  <p className="submission-deadline-2">
-                    <span className="text-wrapper-16">@netlify</span>
-                    <span className="text-wrapper-17">deployment</span>
-                  </p>
-                </a>
+                <TronSoundLink>
+                  <a href="https://x.com/netlify" target="_blank" rel="noopener noreferrer" className="sponsor">
+                    <p className="submission-deadline-2">
+                      <span className="text-wrapper-16">@netlify</span>
+                      <span className="text-wrapper-17">deployment</span>
+                    </p>
+                  </a>
+                </TronSoundLink>
 
-                <a href="https://x.com/cloudflaredev" target="_blank" rel="noopener noreferrer" className="sponsor">
-                  <p className="submission-deadline-2">
-                    <span className="text-wrapper-16">@cloudflaredev</span>
-                    <span className="text-wrapper-17">infrastructure</span>
-                  </p>
-                </a>
+                <TronSoundLink>
+                  <a href="https://x.com/cloudflaredev" target="_blank" rel="noopener noreferrer" className="sponsor">
+                    <p className="submission-deadline-2">
+                      <span className="text-wrapper-16">@cloudflaredev</span>
+                      <span className="text-wrapper-17">infrastructure</span>
+                    </p>
+                  </a>
+                </TronSoundLink>
 
-                <a href="https://x.com/getsentry" target="_blank" rel="noopener noreferrer" className="sponsor">
-                  <p className="submission-deadline-2">
-                    <span className="text-wrapper-16">@getsentry</span>
-                    <span className="text-wrapper-17">monitoring</span>
-                  </p>
-                </a>
+                <TronSoundLink>
+                  <a href="https://x.com/getsentry" target="_blank" rel="noopener noreferrer" className="sponsor">
+                    <p className="submission-deadline-2">
+                      <span className="text-wrapper-16">@getsentry</span>
+                      <span className="text-wrapper-17">monitoring</span>
+                    </p>
+                  </a>
+                </TronSoundLink>
 
-                <a href="https://x.com/loops" target="_blank" rel="noopener noreferrer" className="sponsor">
-                  <p className="submission-deadline-2">
-                    <span className="text-wrapper-16">@loops</span>
-                    <span className="text-wrapper-17">communication</span>
-                  </p>
-                </a>
+                <TronSoundLink>
+                  <a href="https://x.com/loops" target="_blank" rel="noopener noreferrer" className="sponsor">
+                    <p className="submission-deadline-2">
+                      <span className="text-wrapper-16">@loops</span>
+                      <span className="text-wrapper-17">communication</span>
+                    </p>
+                  </a>
+                </TronSoundLink>
 
-                <a href="https://x.com/algofoundation" target="_blank" rel="noopener noreferrer" className="sponsor">
-                  <p className="submission-deadline-2">
-                    <span className="text-wrapper-16">@algofoundation</span>
-                    <span className="text-wrapper-17">blockchain</span>
-                  </p>
-                </a>
+                <TronSoundLink>
+                  <a href="https://x.com/algofoundation" target="_blank" rel="noopener noreferrer" className="sponsor">
+                    <p className="submission-deadline-2">
+                      <span className="text-wrapper-16">@algofoundation</span>
+                      <span className="text-wrapper-17">blockchain</span>
+                    </p>
+                  </a>
+                </TronSoundLink>
 
-                <a href="https://x.com/exaailabs" target="_blank" rel="noopener noreferrer" className="sponsor">
-                  <p className="submission-deadline-2">
-                    <span className="text-wrapper-16">@exaailabs</span>
-                    <span className="text-wrapper-17">search</span>
-                  </p>
-                </a>
+                <TronSoundLink>
+                  <a href="https://x.com/exaailabs" target="_blank" rel="noopener noreferrer" className="sponsor">
+                    <p className="submission-deadline-2">
+                      <span className="text-wrapper-16">@exaailabs</span>
+                      <span className="text-wrapper-17">search</span>
+                    </p>
+                  </a>
+                </TronSoundLink>
 
-                <a href="https://x.com/hsrhackerhouse" target="_blank" rel="noopener noreferrer" className="sponsor">
-                  <p className="submission-deadline-2">
-                    <span className="text-wrapper-16">@hsrhackerhouse</span>
-                    <span className="text-wrapper-17">community</span>
-                  </p>
-                </a>
+                <TronSoundLink>
+                  <a href="https://x.com/hsrhackerhouse" target="_blank" rel="noopener noreferrer" className="sponsor">
+                    <p className="submission-deadline-2">
+                      <span className="text-wrapper-16">@hsrhackerhouse</span>
+                      <span className="text-wrapper-17">community</span>
+                    </p>
+                  </a>
+                </TronSoundLink>
               </div>
 
               <div className="div-wrapper-2">
@@ -141,40 +160,42 @@ export const Container = () => {
             </div>
           </div>
 
-          <a 
-            href="https://form.typeform.com/to/wf94YwH4?typeform-source=t.co" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="sponsor-details-link"
-            aria-label="Become a sponsor - Apply for sponsorship positions"
-          >
-            <div className="sponsor-details">
-              <div className="sponsor-call-to">
-                <div className="text-wrapper-18">become a sponsor</div>
-                <div className="description-7">
-                  <span className="text-wrapper-16">limited positions available across multiple tiers. for sponsorship inquiries, sign up here.</span>
+          <TronSoundLink>
+            <a 
+              href="https://form.typeform.com/to/wf94YwH4?typeform-source=t.co" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="sponsor-details-link"
+              aria-label="Become a sponsor - Apply for sponsorship positions"
+            >
+              <div className="sponsor-details">
+                <div className="sponsor-call-to">
+                  <div className="text-wrapper-18">become a sponsor</div>
+                  <div className="description-7">
+                    <span className="text-wrapper-16">limited positions available across multiple tiers. for sponsorship inquiries, sign up here.</span>
+                  </div>
+                </div>
+
+                <div className="sponsor-terms">
+                  <p className="description-8">
+                    partnership term: <br />
+                    2025-03-28 through 2025-04-28 
+                    <br />
+                    <br />
+                    visibility metrics: <br />
+                    ~500k developer impressions
+                    <br />
+                    <br />
+                    technical benefits: <br />
+                    api access, integration demos, product workshops
+                    <br /> <br />
+                    commitment deadline: <br />
+                    2025-03-22 23:59 utc
+                  </p>
                 </div>
               </div>
-
-              <div className="sponsor-terms">
-                <p className="description-8">
-                  partnership term: <br />
-                  2025-03-28 through 2025-04-28 
-                  <br />
-                  <br />
-                  visibility metrics: <br />
-                  ~500k developer impressions
-                  <br />
-                  <br />
-                  technical benefits: <br />
-                  api access, integration demos, product workshops
-                  <br /> <br />
-                  commitment deadline: <br />
-                  2025-03-22 23:59 utc
-                </p>
-              </div>
-            </div>
-          </a>
+            </a>
+          </TronSoundLink>
         </div>
       </div>
     </div>

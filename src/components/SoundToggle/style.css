@@ -1,0 +1,68 @@
+.sound-toggle {
+  position: fixed;
+  bottom: 64px; /* Position between coordinate toggle (108px) and theme toggle (20px) */
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--bgprimary);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background-color var(--transition-speed) ease,
+              box-shadow var(--transition-speed) ease,
+              transform 0.3s ease;
+  box-shadow: var(--shadow-sm);
+  contain: layout;
+  will-change: background-color, box-shadow, transform;
+  z-index: 999;
+}
+
+.sound-toggle:hover {
+  transform: scale(1.05);
+}
+
+.sound-toggle:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+  box-shadow: var(--focus-shadow);
+  transform: scale(1.05);
+  z-index: 1000;
+}
+
+.sound-icon {
+  color: var(--typeinterface);
+  transition: color var(--transition-speed) ease;
+}
+
+/* TRON theme specific styles */
+[data-theme="tron"] .sound-toggle {
+  border: 1px solid var(--typeinterface);
+}
+
+[data-theme="tron"] .sound-toggle .sound-icon {
+  color: var(--typeinterface);
+}
+
+[data-theme="tron"] .sound-toggle:hover {
+  box-shadow: 0 0 8px rgba(125, 253, 254, 0.4),
+              0 0 16px rgba(125, 253, 254, 0.2);
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .sound-toggle {
+    bottom: 60px;
+    right: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sound-toggle {
+    bottom: 56px;
+    right: 12px;
+  }
+} 

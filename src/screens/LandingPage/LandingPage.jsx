@@ -8,14 +8,16 @@ import { PrizesContainer } from "./sections/PrizesContainer";
 import { LoadingAnimation } from "../../components/LoadingAnimation";
 import { ThemeToggle } from "../../components/ThemeToggle";
 import { CoordinateToggle } from "../../components/CoordinateToggle";
+import { SoundToggle } from "../../components/SoundToggle";
 import "./style.css";
 
 export const LandingPage = () => {
   return (
     <div className="landing-page">
       <LoadingAnimation />
-      <ThemeToggle />
       <CoordinateToggle />
+      <SoundToggle />
+      <ThemeToggle />
       <div className="centered-content">
         <PageContainer />
         <PrizesContainer />

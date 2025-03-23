@@ -1,4 +1,5 @@
 import React from "react";
+import { TronSoundLink } from "../../../../components/TronSoundLink";
 import "./style.css";
 
 export const FaqContainerWrapper = () => {
@@ -141,11 +142,11 @@ export const FaqContainerWrapper = () => {
             <div className="english-header-wrapper">
               <p className="english-header-5">
                 <span className="text-wrapper-23">yes, check our </span>
-
-                <a href="https://support.bolt.new/home" target="_blank" rel="noopener noreferrer" className="text-wrapper-24">
-                  resources
-                </a>
-
+                <TronSoundLink>
+                  <a href="https://support.bolt.new/home" target="_blank" rel="noopener noreferrer" className="text-wrapper-24">
+                    resources
+                  </a>
+                </TronSoundLink>
                 <span className="text-wrapper-23">
                   {" "}
                   page for vibe-coding tutorials, ai tooling docs, and community
@@ -166,17 +167,17 @@ export const FaqContainerWrapper = () => {
             <div className="english-header-wrapper">
               <p className="english-header-5">
                 <span className="text-wrapper-23">join our </span>
-
-                <a href="https://discord.com/invite/stackblitz" target="_blank" rel="noopener noreferrer" className="text-wrapper-24">
-                  discord
-                </a>
-
+                <TronSoundLink>
+                  <a href="https://discord.com/invite/stackblitz" target="_blank" rel="noopener noreferrer" className="text-wrapper-24">
+                    discord
+                  </a>
+                </TronSoundLink>
                 <span className="text-wrapper-23"> or email </span>
-
-                <a href="mailto:hello@stackblitz.com" className="text-wrapper-24">
-                  hello@stackblitz.com
-                </a>
-
+                <TronSoundLink>
+                  <a href="mailto:hello@stackblitz.com" className="text-wrapper-24">
+                    hello@stackblitz.com
+                  </a>
+                </TronSoundLink>
                 <span className="text-wrapper-23">. we're here to assist.</span>
               </p>
             </div>

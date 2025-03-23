@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback, useMemo, useRef } from "react";
+import { TronSoundLink } from "../TronSoundLink";
 import "./style.css";
 
 // Feature detection for localStorage
@@ -123,18 +124,19 @@ export const ThemeToggle = () => {
   }, []);
 
   return (
-    <button 
-      className={`theme-toggle-btn ${currentTheme}`}
-      onClick={toggleTheme}
-      aria-label={themeValues.ariaLabel}
-      // Add containment for performance optimization
-      style={{ contain: "layout paint" }}
-      ref={buttonRef}
-    >
-      <div className="theme-toggle-icon">
-        <div className="outer-circle"></div>
-        <div className="inner-circle"></div>
-      </div>
-    </button>
+    <TronSoundLink>
+      <button 
+        className={`theme-toggle-btn ${currentTheme}`}
+        onClick={toggleTheme}
+        aria-label={themeValues.ariaLabel}
+        style={{ contain: "layout paint" }}
+        ref={buttonRef}
+      >
+        <div className="theme-toggle-icon">
+          <div className="outer-circle"></div>
+          <div className="inner-circle"></div>
+        </div>
+      </button>
+    </TronSoundLink>
   );
 }; 

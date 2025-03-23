@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback, useMemo, useRef } from "react";
+import { TronSoundLink } from "../TronSoundLink";
 import "./style.css";
 
 export const CoordinateToggle = () => {
@@ -108,18 +109,19 @@ export const CoordinateToggle = () => {
 
   return (
     <>
-      <button 
-        className={buttonClassNames}
-        onClick={toggleCoordinates}
-        aria-label={buttonAriaLabel}
-        // Add containment for performance
-        style={{ contain: "layout paint" }}
-        ref={buttonRef}
-      >
-        <div className="coordinate-toggle-icon">
-          <div className="xy-icon">x:y</div>
-        </div>
-      </button>
+      <TronSoundLink>
+        <button 
+          className={buttonClassNames}
+          onClick={toggleCoordinates}
+          aria-label={buttonAriaLabel}
+          style={{ contain: "layout paint" }}
+          ref={buttonRef}
+        >
+          <div className="coordinate-toggle-icon">
+            <div className="xy-icon">x:y</div>
+          </div>
+        </button>
+      </TronSoundLink>
       
       {showCoordinates && (
         <div 

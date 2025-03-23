@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { TronSoundLink } from "../../../../components/TronSoundLink";
 import "./style.css";
 
 export const PageContainer = () => {
@@ -162,49 +163,63 @@ export const PageContainer = () => {
             <header className="header-section">
               <div className="header-content">
                 <div className="logo-container">
-                  <a href="/" className="image-wrapper text-slide-animation" aria-label="Home">
-                    <span>
-                      <img
-                        className="logo logo-image"
-                        alt="Hackathon Logo"
-                        src="https://c.animaapp.com/8VR2LaBZ/img/logo.svg"
-                      />
-                    </span>
-                    <span className="hover-text">
-                      <img
-                        className="logo logo-image"
-                        alt="Hackathon Logo"
-                        src="https://c.animaapp.com/8VR2LaBZ/img/logo.svg"
-                      />
-                    </span>
-                  </a>
+                  <TronSoundLink>
+                    <a href="/" className="image-wrapper text-slide-animation" aria-label="Home">
+                      <span>
+                        <img
+                          className="logo logo-image"
+                          alt="Hackathon Logo"
+                          src="https://c.animaapp.com/8VR2LaBZ/img/logo.svg"
+                        />
+                      </span>
+                      <span className="hover-text">
+                        <img
+                          className="logo logo-image"
+                          alt="Hackathon Logo"
+                          src="https://c.animaapp.com/8VR2LaBZ/img/logo.svg"
+                        />
+                      </span>
+                    </a>
+                  </TronSoundLink>
                   <div className="date">2025 march</div>
                 </div>
                 <nav className="navigation" aria-label="Main navigation">
-                  <a href="#about" className={`nav-link text-slide-animation ${activeSection === "about" ? "active" : ""}`} aria-current={activeSection === "about" ? "page" : undefined}>
-                    <span>about</span>
-                    <span className="hover-text">about</span>
-                  </a>
-                  <a href="#prizes" className={`nav-link text-slide-animation ${activeSection === "prizes" ? "active" : ""}`} aria-current={activeSection === "prizes" ? "page" : undefined}>
-                    <span>prizes</span>
-                    <span className="hover-text">prizes</span>
-                  </a>
-                  <a href="#sponsors" className={`nav-link text-slide-animation ${activeSection === "sponsors" ? "active" : ""}`} aria-current={activeSection === "sponsors" ? "page" : undefined}>
-                    <span>sponsors</span>
-                    <span className="hover-text">sponsors</span>
-                  </a>
-                  <a href="#judges" className={`nav-link text-slide-animation ${activeSection === "judges" ? "active" : ""}`} aria-current={activeSection === "judges" ? "page" : undefined}>
-                    <span>judges</span>
-                    <span className="hover-text">judges</span>
-                  </a>
-                  <a href="#faq" className={`nav-link text-slide-animation ${activeSection === "faq" ? "active" : ""}`} aria-current={activeSection === "faq" ? "page" : undefined}>
-                    <span>faq</span>
-                    <span className="hover-text">faq</span>
-                  </a>
-                  <a href="https://form.typeform.com/to/wf94YwH4?typeform-source=t.co" target="_blank" rel="noopener noreferrer" className="nav-link register text-slide-animation">
-                    <span>register</span>
-                    <span className="hover-text">register</span>
-                  </a>
+                  <TronSoundLink>
+                    <a href="#about" className={`nav-link text-slide-animation ${activeSection === "about" ? "active" : ""}`} aria-current={activeSection === "about" ? "page" : undefined}>
+                      <span>about</span>
+                      <span className="hover-text">about</span>
+                    </a>
+                  </TronSoundLink>
+                  <TronSoundLink>
+                    <a href="#prizes" className={`nav-link text-slide-animation ${activeSection === "prizes" ? "active" : ""}`} aria-current={activeSection === "prizes" ? "page" : undefined}>
+                      <span>prizes</span>
+                      <span className="hover-text">prizes</span>
+                    </a>
+                  </TronSoundLink>
+                  <TronSoundLink>
+                    <a href="#sponsors" className={`nav-link text-slide-animation ${activeSection === "sponsors" ? "active" : ""}`} aria-current={activeSection === "sponsors" ? "page" : undefined}>
+                      <span>sponsors</span>
+                      <span className="hover-text">sponsors</span>
+                    </a>
+                  </TronSoundLink>
+                  <TronSoundLink>
+                    <a href="#judges" className={`nav-link text-slide-animation ${activeSection === "judges" ? "active" : ""}`} aria-current={activeSection === "judges" ? "page" : undefined}>
+                      <span>judges</span>
+                      <span className="hover-text">judges</span>
+                    </a>
+                  </TronSoundLink>
+                  <TronSoundLink>
+                    <a href="#faq" className={`nav-link text-slide-animation ${activeSection === "faq" ? "active" : ""}`} aria-current={activeSection === "faq" ? "page" : undefined}>
+                      <span>faq</span>
+                      <span className="hover-text">faq</span>
+                    </a>
+                  </TronSoundLink>
+                  <TronSoundLink>
+                    <a href="https://form.typeform.com/to/wf94YwH4?typeform-source=t.co" target="_blank" rel="noopener noreferrer" className="nav-link register text-slide-animation">
+                      <span>register</span>
+                      <span className="hover-text">register</span>
+                    </a>
+                  </TronSoundLink>
                 </nav>
               </div>
             </header>
@@ -224,20 +239,24 @@ export const PageContainer = () => {
                     we&#39;ve engineered the perfect environment for creation.
                     no compromises. born on{" "}
                   </span>
-                  <a href="https://x.com/boltdotnew" target="_blank" rel="noopener noreferrer" className="text-wrapper-2 text-slide-animation">
-                    <span>x</span>
-                    <span className="hover-text">x</span>
-                  </a>
+                  <TronSoundLink>
+                    <a href="https://x.com/boltdotnew" target="_blank" rel="noopener noreferrer" className="text-wrapper-2 text-slide-animation">
+                      <span>x</span>
+                      <span className="hover-text">x</span>
+                    </a>
+                  </TronSoundLink>
                   <span className="span">.</span>
                 </p>
               </div>
             </div>
-            <div className="arrow">
-              <div className="continuation">
-                続<br />き<br />あ<br />り
-              </div>
-              <div className="arrow-2">↓</div>
-            </div>
+            <TronSoundLink>
+              <a href="#about" className="arrow" aria-label="Scroll to about section">
+                <div className="continuation">
+                  続<br />き<br />あ<br />り
+                </div>
+                <div className="arrow-2">↓</div>
+              </a>
+            </TronSoundLink>
           </div>
         </div>
       </div>
