@@ -1,3 +1,39 @@
+/* Font loading optimizations */
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&family=Space+Grotesk:wght@400;500&family=Google+Sans+Mono&family=Roboto:wght@300;400&family=Open+Sans:wght@300;400&display=swap&display=swap');
+
+/* Font loading performance */
+@font-face {
+  font-family: 'Chakra Petch';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Chakra Petch Regular'), local('ChakraPetch-Regular');
+}
+
+@font-face {
+  font-family: 'Chakra Petch';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Chakra Petch Bold'), local('ChakraPetch-Bold');
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Space Grotesk Regular'), local('SpaceGrotesk-Regular');
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local('Space Grotesk Medium'), local('SpaceGrotesk-Medium');
+}
+
 :root {
   /* Light theme (default) */
   --bgprimary: rgba(255, 255, 255, 1);
@@ -127,6 +163,196 @@
   /* Accessibility focus styles for dark theme (WCAG AA compliant) */
   --focus-outline-color: rgba(120, 170, 255, 1); /* Brighter blue for dark theme with sufficient contrast */
   --focus-shadow: 0 0 0 4px rgba(120, 170, 255, 0.3); /* Brighter shadow for visibility */
+}
+
+/* TRON Legacy theme */
+[data-theme="tron"] {
+  /* Base colors */
+  --bgprimary: rgba(0, 0, 0, 1);
+  --bgprimary-rgb: 0, 0, 0;
+  --bgsecondary: rgba(18, 18, 18, 1);
+  --bgsecondary-rgb: 18, 18, 18;
+  
+  /* Typography colors */
+  --typeprimary: rgba(255, 255, 255, 1);
+  --typesecondary: rgba(125, 253, 254, 1); /* Primary Blue */
+  --typetertiary: rgba(4, 217, 255, 1); /* Alternative Blue */
+  --typequaternary: rgba(24, 202, 230, 1); /* Subtle Blue */
+  --typequinary: rgba(255, 144, 0, 1); /* TRON Orange */
+  --typebody: rgba(255, 255, 255, 0.9);
+  --typebody-secondary: rgba(125, 253, 254, 0.8);
+  --typecaption: rgba(125, 253, 254, 0.6);
+  --typedata: var(--typequinary);
+  --typeinterface: rgba(125, 253, 254, 1);
+  --typeinterface-rgb: 125, 253, 254;
+  --typeinterface-inactive: rgba(125, 253, 254, 0.4);
+  --typesignal: rgba(4, 217, 255, 1);
+
+  /* Shadow and glow effects */
+  --shadow-sm: 0 0 5px rgba(125, 253, 254, 0.2);
+  --shadow-md: 0 0 10px rgba(125, 253, 254, 0.3);
+  --shadow-lg: 0 0 20px rgba(125, 253, 254, 0.4);
+  
+  /* Focus styles */
+  --focus-outline-color: rgba(4, 217, 255, 1);
+  --focus-shadow: 0 0 15px rgba(4, 217, 255, 0.5);
+
+  /* TRON-specific typography with dark mode sizing */
+  --h-1-font-family: "Chakra Petch", sans-serif;
+  --h-1-font-weight: 700;
+  --h-1-font-size: 120px;
+  --h-1-line-height: 110%;
+  --h-1-letter-spacing: -1.2px;
+  
+  --h-2-font-family: "Chakra Petch", sans-serif;
+  --h-2-font-weight: 700;
+  --h-2-font-size: 72px;
+  --h-2-line-height: 110%;
+  --h-2-letter-spacing: -0.72px;
+  
+  --h-3-font-family: "Space Grotesk", sans-serif;
+  --h-3-font-weight: 500;
+  --h-3-font-size: 48px;
+  --h-3-line-height: 110%;
+  --h-3-letter-spacing: -0.48px;
+  
+  --h-4-font-family: "Space Grotesk", sans-serif;
+  --h-4-font-weight: 500;
+  --h-4-font-size: 32px;
+  --h-4-line-height: 112.5%;
+  --h-4-letter-spacing: -0.32px;
+  
+  --h-5-font-family: "Space Grotesk", sans-serif;
+  --h-5-font-weight: 500;
+  --h-5-font-size: 24px;
+  --h-5-line-height: 112.5%;
+  --h-5-letter-spacing: -0.24px;
+  
+  --body-font-family: "Roboto", "Open Sans", sans-serif;
+  --body-font-size: 16px;
+  --body-font-weight: 400;
+  --body-line-height: 150%;
+  --body-letter-spacing: -0.08px;
+  
+  --caption-font-family: "Roboto", "Open Sans", sans-serif;
+  --caption-font-size: 14px;
+  --caption-font-weight: 300;
+  --caption-line-height: 143%;
+  --caption-letter-spacing: 0px;
+  
+  --technical-specifications-font-family: "Google Sans Mono", "JetBrains Mono", monospace;
+  --technical-specifications-font-size: 10px;
+  --technical-specifications-font-weight: 400;
+  --technical-specifications-line-height: 133%;
+  --technical-specifications-letter-spacing: 0px;
+  
+  /* Navigation and button specific */
+  --navigation-font-family: "Space Grotesk", sans-serif;
+  --navigation-font-size: 16px;
+  --navigation-font-weight: 400;
+  --navigation-line-height: 100%;
+  --navigation-letter-spacing: -0.08px;
+  
+  --buttons-font-family: "Space Grotesk", sans-serif;
+  --buttons-font-size: 16px;
+  --buttons-font-weight: 500;
+  --buttons-line-height: 100%;
+  --buttons-letter-spacing: 0px;
+}
+
+/* TRON theme typography styles */
+[data-theme="tron"] h1 {
+  font-family: var(--h-1-font-family);
+  font-weight: var(--h-1-font-weight);
+  font-size: var(--h-1-font-size);
+  line-height: var(--h-1-line-height);
+  text-shadow: 0 0 5px #7DFDFE,
+               0 0 10px #7DFDFE,
+               0 0 15px #7DFDFE,
+               0 0 20px #7DFDFE;
+}
+
+[data-theme="tron"] h2 {
+  font-family: var(--h-2-font-family);
+  font-weight: var(--h-2-font-weight);
+  font-size: var(--h-2-font-size);
+  line-height: var(--h-2-line-height);
+  text-shadow: 0 0 4px #7DFDFE,
+               0 0 8px #7DFDFE;
+}
+
+[data-theme="tron"] h3 {
+  font-family: var(--h-3-font-family);
+  font-weight: var(--h-3-font-weight);
+  font-size: var(--h-3-font-size);
+  line-height: var(--h-3-line-height);
+  text-shadow: 0 0 3px #7DFDFE,
+               0 0 6px #7DFDFE;
+}
+
+[data-theme="tron"] h4 {
+  font-family: var(--h-4-font-family);
+  font-weight: var(--h-4-font-weight);
+  font-size: var(--h-4-font-size);
+  line-height: var(--h-4-line-height);
+  text-shadow: 0 0 2px #7DFDFE,
+               0 0 4px #7DFDFE;
+}
+
+[data-theme="tron"] h5 {
+  font-family: var(--h-5-font-family);
+  font-weight: var(--h-5-font-weight);
+  font-size: var(--h-5-font-size);
+  line-height: var(--h-5-line-height);
+  text-shadow: 0 0 1px #7DFDFE,
+               0 0 2px #7DFDFE;
+}
+
+[data-theme="tron"] p,
+[data-theme="tron"] .body-text {
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size);
+  font-weight: var(--body-font-weight);
+  line-height: var(--body-line-height);
+  text-shadow: 0 0 3px #04D9FF;
+}
+
+[data-theme="tron"] .caption {
+  font-family: var(--caption-font-family);
+  font-size: var(--caption-font-size);
+  font-weight: var(--caption-font-weight);
+  line-height: var(--caption-line-height);
+  text-shadow: 0 0 2px #7DFDFE;
+}
+
+[data-theme="tron"] code,
+[data-theme="tron"] .technical-text {
+  font-family: var(--technical-specifications-font-family);
+  font-size: var(--technical-specifications-font-size);
+  font-weight: var(--technical-specifications-font-weight);
+  line-height: var(--technical-specifications-line-height);
+  text-shadow: 0 0 3px #18CAE6;
+}
+
+/* Responsive typography for TRON theme */
+@media (max-width: 768px) {
+  [data-theme="tron"] {
+    --h-1-font-size: 40px;
+    --body-font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  [data-theme="tron"] {
+    --h-1-font-size: 32px;
+    --h-2-font-size: 22px;
+    --h-3-font-size: 16px;
+    --h-4-font-size: 14px;
+    --h-5-font-size: 12px;
+    --body-font-size: 16px;
+    --caption-font-size: 12px;
+    --technical-specifications-font-size: 12px;
+  }
 }
 
 /* Targeted transitions for theme changes - replacing the global transition */

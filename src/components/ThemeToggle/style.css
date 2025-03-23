@@ -14,10 +14,11 @@
   justify-content: center;
   padding: 0;
   transition: background-color var(--transition-speed) ease, 
-              box-shadow var(--transition-speed) ease;
+              box-shadow var(--transition-speed) ease,
+              border var(--transition-speed) ease;
   box-shadow: var(--shadow-sm);
   contain: layout;
-  will-change: background-color, box-shadow;
+  will-change: background-color, box-shadow, border;
 }
 
 .theme-toggle-btn:hover {
@@ -52,8 +53,9 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transition: border-color var(--transition-speed) ease;
-  will-change: border-color;
+  transition: border-color var(--transition-speed) ease,
+              box-shadow var(--transition-speed) ease;
+  will-change: border-color, box-shadow;
 }
 
 .inner-circle {
@@ -65,8 +67,34 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transition: background-color var(--transition-speed) ease;
-  will-change: background-color;
+  transition: background-color var(--transition-speed) ease,
+              box-shadow var(--transition-speed) ease;
+  will-change: background-color, box-shadow;
+}
+
+/* TRON theme specific styles */
+.theme-toggle-btn.tron {
+  border: 1px solid var(--typeinterface);
+}
+
+.theme-toggle-btn.tron .outer-circle {
+  box-shadow: 0 0 5px rgba(125, 253, 254, 0.3),
+              0 0 10px rgba(125, 253, 254, 0.2);
+}
+
+.theme-toggle-btn.tron .inner-circle {
+  box-shadow: 0 0 5px rgba(125, 253, 254, 0.5),
+              0 0 10px rgba(125, 253, 254, 0.3);
+}
+
+.theme-toggle-btn.tron:hover .outer-circle {
+  box-shadow: 0 0 8px rgba(125, 253, 254, 0.4),
+              0 0 16px rgba(125, 253, 254, 0.3);
+}
+
+.theme-toggle-btn.tron:hover .inner-circle {
+  box-shadow: 0 0 8px rgba(125, 253, 254, 0.6),
+              0 0 16px rgba(125, 253, 254, 0.4);
 }
 
 /* Media queries for responsive spacing */

@@ -2,6 +2,7 @@
 @import './animations.css';
 
 :root {
+  /* Base typography */
   --h1-font: 300 120px/110% 'Space Grotesk', sans-serif;
   --h2-font: 300 72px/110% 'Space Grotesk', sans-serif;
   --h3-font: 300 48px/110% 'Space Grotesk', sans-serif;
@@ -12,6 +13,46 @@
   --button-font: 400 16px/100% 'JetBrains Mono', monospace;
   --caption-font: 200 14px/143% 'JetBrains Mono', monospace;
   --tech-spec-font: 200 10px/133% 'JetBrains Mono', monospace;
+}
+
+/* TRON theme typography overrides */
+[data-theme="tron"] {
+  --h1-font: 700 120px/110% 'Chakra Petch', sans-serif;
+  --h2-font: 700 72px/110% 'Chakra Petch', sans-serif;
+  --h3-font: 500 48px/110% 'Space Grotesk', sans-serif;
+  --h4-font: 500 32px/112.5% 'Space Grotesk', sans-serif;
+  --h5-font: 500 24px/112.5% 'Space Grotesk', sans-serif;
+  --body-font: 400 16px/150% 'Roboto', 'Open Sans', sans-serif;
+  --nav-font: 400 16px/100% 'Space Grotesk', sans-serif;
+  --button-font: 500 16px/100% 'Space Grotesk', sans-serif;
+  --caption-font: 300 14px/143% 'Roboto', 'Open Sans', sans-serif;
+  --tech-spec-font: 400 10px/133% 'Google Sans Mono', 'JetBrains Mono', monospace;
+}
+
+/* Responsive typography for TRON theme */
+@media (max-width: 768px) {
+  [data-theme="tron"] {
+    --h1-font: 700 60px/110% 'Chakra Petch', sans-serif;
+    --h2-font: 700 48px/110% 'Chakra Petch', sans-serif;
+    --h3-font: 500 36px/110% 'Space Grotesk', sans-serif;
+    --h4-font: 500 24px/112.5% 'Space Grotesk', sans-serif;
+    --h5-font: 500 20px/112.5% 'Space Grotesk', sans-serif;
+    --body-font: 400 16px/150% 'Roboto', 'Open Sans', sans-serif;
+  }
+}
+
+@media (max-width: 480px) {
+  [data-theme="tron"] {
+    --h1-font: 700 48px/110% 'Chakra Petch', sans-serif;
+    --h2-font: 700 36px/110% 'Chakra Petch', sans-serif;
+    --h3-font: 500 28px/110% 'Space Grotesk', sans-serif;
+    --h4-font: 500 20px/112.5% 'Space Grotesk', sans-serif;
+    --h5-font: 500 16px/112.5% 'Space Grotesk', sans-serif;
+    --body-font: 400 16px/150% 'Roboto', 'Open Sans', sans-serif;
+    --nav-font: 400 14px/100% 'Space Grotesk', sans-serif;
+    --caption-font: 300 12px/143% 'Roboto', 'Open Sans', sans-serif;
+    --tech-spec-font: 400 12px/133% 'Google Sans Mono', 'JetBrains Mono', monospace;
+  }
 }
 
 .landing-page {
@@ -370,4 +411,9 @@ a, a:link, a:visited, a:hover, a:active {
 
 [data-theme="dark"] .image-wrapper img.logo-image {
   filter: brightness(1) invert(1);
+}
+
+[data-theme="tron"] .image-wrapper img.logo-image {
+  filter: brightness(1) invert(1) drop-shadow(0 0 5px rgba(125, 253, 254, 0.5))
+          drop-shadow(0 0 10px rgba(125, 253, 254, 0.3));
 }

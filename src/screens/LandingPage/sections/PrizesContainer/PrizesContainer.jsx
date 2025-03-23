@@ -14,14 +14,7 @@ export const PrizesContainer = () => {
 
             <div className="prizes-description">
               <p className="description-4">
-                this hackathon brings together a global community
-                <br />
-                of creators to compete for over $1 million in prizes.
-                <br />
-                from technical excellence to community impact,
-                <br />
-                there's a prize for every type of innovator—four tiers, one
-                unforgettable event.
+                this hackathon brings together a global community of creators to compete for over $1 million in prizes. from technical excellence to community impact, there's a prize for every type of innovator—four tiers, one unforgettable event.
               </p>
             </div>
           </div>

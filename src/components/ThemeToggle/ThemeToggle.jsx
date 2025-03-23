@@ -22,40 +22,44 @@ export const ThemeToggle = () => {
   const savedTheme = getSavedTheme();
   
   // Initialize state with saved theme or system preference
-  const [isDarkMode, setIsDarkMode] = useState(() => {
+  const [currentTheme, setCurrentTheme] = useState(() => {
     // If theme is saved in localStorage, use that
     if (savedTheme) {
-      return savedTheme === "dark";
+      return savedTheme;
     }
     // Otherwise check system preference
-    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   });
   
   // Reference to the button element to maintain focus
   const buttonRef = useRef(null);
 
   // Cache theme-dependent values to prevent recalculations
-  const themeValues = useMemo(() => ({
-    theme: isDarkMode ? "dark" : "light",
-    ariaLabel: isDarkMode ? "Switch to light mode" : "Switch to dark mode",
-  }), [isDarkMode]);
+  const themeValues = useMemo(() => {
+    const themeLabels = {
+      light: "Switch to dark mode",
+      dark: "Switch to TRON mode",
+      tron: "Switch to light mode"
+    };
+    return {
+      theme: currentTheme,
+      ariaLabel: themeLabels[currentTheme]
+    };
+  }, [currentTheme]);
 
-  // Apply theme when component mounts and when isDarkMode changes
-  // Use useCallback to memoize the applyTheme function
-  const applyTheme = useCallback((isDark) => {
+  // Apply theme when component mounts and when theme changes
+  const applyTheme = useCallback((theme) => {
     // Track if element was focused before theme change
     const wasFocused = document.activeElement === buttonRef.current;
     
-    if (isDark) {
-      document.documentElement.setAttribute("data-theme", "dark");
-      if (supportsLocalStorage()) {
-        localStorage.setItem("theme", "dark");
-      }
-    } else {
+    if (theme === "light") {
       document.documentElement.removeAttribute("data-theme");
-      if (supportsLocalStorage()) {
-        localStorage.setItem("theme", "light");
-      }
+    } else {
+      document.documentElement.setAttribute("data-theme", theme);
+    }
+    
+    if (supportsLocalStorage()) {
+      localStorage.setItem("theme", theme);
     }
     
     // Restore focus after theme change if it was focused
@@ -70,9 +74,9 @@ export const ThemeToggle = () => {
   useEffect(() => {
     // Create a single requestAnimationFrame call to batch DOM changes
     requestAnimationFrame(() => {
-      applyTheme(isDarkMode);
+      applyTheme(currentTheme);
     });
-  }, [isDarkMode, applyTheme]);
+  }, [currentTheme, applyTheme]);
   
   // Listen for system preference changes if no saved theme
   useEffect(() => {
@@ -81,7 +85,7 @@ export const ThemeToggle = () => {
       
       // Define the handler function
       const handleChange = (e) => {
-        setIsDarkMode(e.matches);
+        setCurrentTheme(e.matches ? "dark" : "light");
       };
       
       // Add the event listener
@@ -104,14 +108,23 @@ export const ThemeToggle = () => {
     }
   }, [savedTheme]);
 
-  // Toggle between dark and light mode
+  // Toggle between themes
   const toggleTheme = useCallback(() => {
-    setIsDarkMode(prevState => !prevState);
+    setCurrentTheme(prevTheme => {
+      switch (prevTheme) {
+        case "light":
+          return "dark";
+        case "dark":
+          return "tron";
+        default:
+          return "light";
+      }
+    });
   }, []);
 
   return (
     <button 
-      className="theme-toggle-btn" 
+      className={`theme-toggle-btn ${currentTheme}`}
       onClick={toggleTheme}
       aria-label={themeValues.ariaLabel}
       // Add containment for performance optimization

@@ -35,12 +35,21 @@ export const FrameWrapper = () => {
           <div className="footer-line" />
 
           <div className="footer-info">
-            <a href="/" className="image-wrapper">
-              <img
-                className="logo-2 logo-image"
-                alt="Logo"
-                src="https://c.animaapp.com/8VR2LaBZ/img/logo-1.svg"
-              />
+            <a href="/" className="image-wrapper text-slide-animation" aria-label="Home">
+              <span>
+                <img
+                  className="logo logo-image"
+                  alt="Hackathon Logo"
+                  src="https://c.animaapp.com/8VR2LaBZ/img/logo.svg"
+                />
+              </span>
+              <span className="hover-text">
+                <img
+                  className="logo logo-image"
+                  alt="Hackathon Logo"
+                  src="https://c.animaapp.com/8VR2LaBZ/img/logo.svg"
+                />
+              </span>
             </a>
 
             <div className="footer-links">

@@ -358,4 +358,37 @@
 
 [data-theme="dark"] .progress-container {
   background-color: rgba(45, 45, 45, 0.8); /* Slightly different background for progress bar */
+}
+
+/* TRON theme specific styles */
+[data-theme="tron"] .loading-animation {
+  background-color: var(--bgprimary);
+}
+
+[data-theme="tron"] .loading-text {
+  color: var(--typesecondary);
+  text-shadow: 0 0 5px rgba(125, 253, 254, 0.5),
+               0 0 10px rgba(125, 253, 254, 0.3);
+}
+
+[data-theme="tron"] .shape {
+  border-color: var(--typeinterface);
+  box-shadow: 0 0 5px rgba(125, 253, 254, 0.3),
+              0 0 10px rgba(125, 253, 254, 0.2);
+}
+
+[data-theme="tron"] .progress-bar {
+  background-color: rgba(125, 253, 254, 0.1);
+}
+
+[data-theme="tron"] .progress-fill {
+  background-color: var(--typeinterface);
+  box-shadow: 0 0 5px rgba(125, 253, 254, 0.3),
+              0 0 10px rgba(125, 253, 254, 0.2);
+}
+
+[data-theme="tron"] .shapes-converged .shape {
+  border-color: var(--typequinary);
+  box-shadow: 0 0 8px rgba(255, 144, 0, 0.4),
+              0 0 16px rgba(255, 144, 0, 0.2);
 } 

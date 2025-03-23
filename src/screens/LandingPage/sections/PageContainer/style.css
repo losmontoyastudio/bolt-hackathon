@@ -224,7 +224,6 @@
 }
 
 .page-container .arrow-2 {
-  align-self: stretch;
   color: var(--typeprimary);
   font: var(--h1-font);
   letter-spacing: -1%;

@@ -224,7 +224,10 @@ export const PageContainer = () => {
                     we&#39;ve engineered the perfect environment for creation.
                     no compromises. born on{" "}
                   </span>
-                  <a href="https://x.com/boltdotnew" target="_blank" rel="noopener noreferrer" className="text-wrapper-2">x</a>
+                  <a href="https://x.com/boltdotnew" target="_blank" rel="noopener noreferrer" className="text-wrapper-2 text-slide-animation">
+                    <span>x</span>
+                    <span className="hover-text">x</span>
+                  </a>
                   <span className="span">.</span>
                 </p>
               </div>
