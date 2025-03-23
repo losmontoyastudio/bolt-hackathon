@@ -24,17 +24,29 @@ class SoundManager {
     return window.matchMedia('(max-width: 768px)').matches;
   }
 
+  getCurrentTheme() {
+    return document.documentElement.getAttribute('data-theme') || 'light';
+  }
+
   loadSoundPreference() {
     try {
-      // Default to true for first-time visitors, but false on mobile
-      const savedPreference = localStorage.getItem('tronSoundEnabled');
-      if (savedPreference === null) {
-        return !this.isMobileDevice(); // Default to false on mobile
+      // If on mobile, always return false
+      if (this.isMobileDevice()) {
+        return false;
       }
+
+      const savedPreference = localStorage.getItem('tronSoundEnabled');
+      const currentTheme = this.getCurrentTheme();
+
+      // If no saved preference and theme is TRON, default to true
+      if (savedPreference === null) {
+        return currentTheme === 'tron';
+      }
+
       return savedPreference === 'true';
     } catch (error) {
       console.warn('Failed to load sound preference:', error);
-      return !this.isMobileDevice(); // Default to false on mobile if error
+      return !this.isMobileDevice() && this.getCurrentTheme() === 'tron';
     }
   }
 
