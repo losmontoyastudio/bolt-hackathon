@@ -33,7 +33,6 @@ export const LoadingAnimation = () => {
     
     // Failsafe: Set maximum time for scroll lock (10 seconds)
     const maxScrollLockTimeout = setTimeout(() => {
-      console.log("Maximum scroll lock time reached, restoring scroll");
       removeScrollLock();
     }, 10000);
     

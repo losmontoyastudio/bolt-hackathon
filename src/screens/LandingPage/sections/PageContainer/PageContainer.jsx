@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./style.css";
 
 export const PageContainer = () => {
   const [activeSection, setActiveSection] = useState("");
+  // Add a ref to store the IntersectionObserver instance
+  const observerRef = useRef(null);
+  // Add a ref to store observed elements for proper cleanup
+  const observedElementsRef = useRef(new Set());
 
   useEffect(() => {
     // Throttle function to limit how often a function can be called
@@ -65,34 +69,88 @@ export const PageContainer = () => {
       threshold: 0.15 // Trigger when at least 15% of the element is visible
     };
     
-    const animationObserver = new IntersectionObserver((entries) => {
+    // Function to safely observe elements
+    const safelyObserveElement = (element) => {
+      // Check if element is valid and not already observed
+      if (element && !observedElementsRef.current.has(element)) {
+        observerRef.current.observe(element);
+        observedElementsRef.current.add(element);
+      }
+    };
+
+    // Function to safely unobserve elements
+    const safelyUnobserveElement = (element) => {
+      // Check if element is valid and currently observed
+      if (element && observedElementsRef.current.has(element)) {
+        observerRef.current.unobserve(element);
+        observedElementsRef.current.delete(element);
+      }
+    };
+    
+    // Create the observer and store in ref for cleanup
+    observerRef.current = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
+        const target = entry.target;
+        
         if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          // Don't unobserve - we want to trigger again if element goes out and back in view
+          target.classList.add('in-view');
+          
+          // Optional: Unobserve after adding in-view if the animation only needs to happen once
+          // This reduces memory usage by removing observers for elements that are already animated
+          // Uncomment this line if you want the animation to only happen once per page load:
+          // safelyUnobserveElement(target);
+        } else {
+          // Only remove the class if we want the animation to replay when scrolling back into view
+          // If this is the desired behavior, keep this line, otherwise remove it for performance
+          // target.classList.remove('in-view');
         }
       });
     }, observerOptions);
     
+    // Clear any existing observed elements
+    observedElementsRef.current.clear();
+    
     // Observe all animation sections
     document.querySelectorAll('.section-animate').forEach(section => {
-      animationObserver.observe(section);
+      safelyObserveElement(section);
     });
     
     // Initial check for elements in view after a small delay
-    setTimeout(() => {
+    const initialCheckTimeout = setTimeout(() => {
       document.querySelectorAll('.section-animate').forEach(section => {
         const rect = section.getBoundingClientRect();
         if (rect.top < window.innerHeight * 0.85) {
           section.classList.add('in-view');
+          
+          // Optional: Unobserve sections that are already in view on load
+          // Uncomment this line if animations should only play once:
+          // safelyUnobserveElement(section);
         }
       });
     }, 100);
     
     return () => {
       window.removeEventListener("scroll", throttledScroll);
-      // Disconnect the observer when the component unmounts
-      animationObserver.disconnect();
+      clearTimeout(initialCheckTimeout);
+      
+      // Clean up the observer and clear all observed elements
+      if (observerRef.current) {
+        // Properly unobserve all elements before disconnecting
+        observedElementsRef.current.forEach(element => {
+          try {
+            observerRef.current.unobserve(element);
+          } catch (e) {
+            console.warn('Failed to unobserve element:', e);
+          }
+        });
+        
+        // Disconnect the observer
+        observerRef.current.disconnect();
+        observerRef.current = null;
+        
+        // Clear the set of observed elements
+        observedElementsRef.current.clear();
+      }
     };
   }, [activeSection]); // Add activeSection to dependency array
 

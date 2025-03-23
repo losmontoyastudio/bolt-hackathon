@@ -29,3 +29,14 @@ If you are satisfied with the result, you can finally build the project for rele
 ```
 npm run build
 ```
+
+## Recent Fixes and Optimizations
+
+### IntersectionObserver Memory Leak Fix
+
+The `PageContainer` component has been updated to properly handle IntersectionObserver cleanup, preventing memory leaks during long scrolling sessions. The following improvements were made:
+
+1. Added proper tracking of observed elements using a Set stored in a ref
+2. Implemented safe observe/unobserve methods to prevent errors
+3. Properly disconnected observers and unobserved all elements during cleanup
+4. Added try/catch blocks to handle potential errors during cleanup
