@@ -16,39 +16,6 @@ export const LoadingAnimation = () => {
   const scrollLockRestoredRef = useRef(false);
   // Add ref to track the animation start time
   const startTimeRef = useRef(Date.now());
-  // Add ref to track vibration interval
-  const vibrationIntervalRef = useRef(null);
-
-  // Function to start continuous haptic feedback
-  const startContinuousVibration = useCallback(() => {
-    // Check if the device supports vibration
-    if ('vibrate' in navigator) {
-      // Clear any existing interval
-      if (vibrationIntervalRef.current) {
-        clearInterval(vibrationIntervalRef.current);
-      }
-      
-      // Create a continuous vibration pattern
-      // Vibrate for 100ms, pause for 100ms
-      navigator.vibrate([100, 100]);
-      
-      // Repeat the pattern every 200ms
-      vibrationIntervalRef.current = setInterval(() => {
-        navigator.vibrate([100, 100]);
-      }, 200);
-    }
-  }, []);
-
-  // Function to stop vibration
-  const stopVibration = useCallback(() => {
-    if ('vibrate' in navigator) {
-      navigator.vibrate(0); // Stop any ongoing vibration
-    }
-    if (vibrationIntervalRef.current) {
-      clearInterval(vibrationIntervalRef.current);
-      vibrationIntervalRef.current = null;
-    }
-  }, []);
 
   // Function to safely remove scroll lock
   const removeScrollLock = useCallback(() => {
@@ -64,34 +31,28 @@ export const LoadingAnimation = () => {
     scrollLockRestoredRef.current = false;
     startTimeRef.current = Date.now();
     
-    // Start continuous vibration when component mounts
-    startContinuousVibration();
-    
     // Failsafe: Set maximum time for scroll lock (10 seconds)
     const maxScrollLockTimeout = setTimeout(() => {
       removeScrollLock();
-      stopVibration(); // Stop vibration if max time is reached
     }, 10000);
     
     timersRef.current.push(maxScrollLockTimeout);
     
-    // Remove class and stop vibration when component unmounts
+    // Remove class when component unmounts
     return () => {
       removeScrollLock();
-      stopVibration();
       // Clear any pending timeouts
       timersRef.current.forEach(timer => clearTimeout(timer));
       timersRef.current = [];
     };
-  }, [removeScrollLock, startContinuousVibration, stopVibration]);
+  }, [removeScrollLock]);
 
-  // Remove no-scroll class and stop vibration when animation completes
+  // Remove no-scroll class when animation completes
   useEffect(() => {
     if (!visible) {
       removeScrollLock();
-      stopVibration();
     }
-  }, [visible, removeScrollLock, stopVibration]);
+  }, [visible, removeScrollLock]);
 
   // Add failsafe: Listen for user interaction to release scroll lock if needed
   useEffect(() => {
@@ -99,7 +60,6 @@ export const LoadingAnimation = () => {
       // If animation has been visible too long (5+ seconds) or has errors, force scroll restoration
       if (visible && Date.now() - startTimeRef.current > 5000) {
         removeScrollLock();
-        stopVibration(); // Stop vibration if user interaction occurs after timeout
       }
     };
     
@@ -112,7 +72,7 @@ export const LoadingAnimation = () => {
       window.removeEventListener('keydown', handleUserInteraction);
       window.removeEventListener('touchstart', handleUserInteraction);
     };
-  }, [visible, removeScrollLock, stopVibration]);
+  }, [visible, removeScrollLock]);
 
   // Cache lines to prevent recreating array on each render
   const lines = useMemo(() => [
@@ -191,8 +151,6 @@ export const LoadingAnimation = () => {
         setVisible(false);
         // Make sure scroll is restored when animation finishes
         removeScrollLock();
-        // Stop vibration when animation is complete
-        stopVibration();
       }, 600); // Shorter fade out time
       
       // Store timer for cleanup
@@ -203,7 +161,7 @@ export const LoadingAnimation = () => {
         clearTimeout(fadeOutTimer);
       };
     }
-  }, [currentLineIndex, currentText, lines, updateAnimation, removeScrollLock, stopVibration]);
+  }, [currentLineIndex, currentText, lines, updateAnimation, removeScrollLock]);
 
   // Memoize shape rendering to prevent recalculation
   const renderShape = useCallback(() => {
