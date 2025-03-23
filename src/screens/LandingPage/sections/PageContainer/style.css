@@ -339,7 +339,7 @@
 
 @media (min-width: 769px) {
   .page-container .about-container-wrapper {
-    margin-bottom: 0;
+    margin-bottom: 64px;
   }
 
   .page-container .about-details {
@@ -376,6 +376,10 @@
   .page-container .about-container {
     margin-top: 64px;
     gap: 32px;
+  }
+
+  .page-container .about-container-wrapper {
+    margin-bottom: 64px;
   }
 
   .page-container .header-section {
@@ -487,6 +491,10 @@
     position: relative;
   }
 
+  .page-container .about-container-wrapper {
+    margin-bottom: 40px;
+  }
+
   .page-container .about-details {
     display: grid;
     grid-template-columns: 1fr;
@@ -518,6 +526,10 @@
   .page-container .p {
     position: relative;
     width: 100%;
+  }
+
+  .page-container .about-container-wrapper {
+    margin-bottom: 64px;
   }
 
   .page-container .navigation {
