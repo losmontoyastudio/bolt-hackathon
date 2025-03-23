@@ -46,11 +46,11 @@
 }
 
 .shape-container {
-  height: 60px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   /* Add containment for animations */
   contain: layout;
 }
@@ -64,7 +64,7 @@
   color: var(--typebody);
   text-align: center;
   min-height: 15px;
-  margin-bottom: 40px;
+  margin-bottom: 16px;
   /* Only transition color */
   transition: color var(--transition-speed) ease;
 }
@@ -328,14 +328,42 @@
 }
 
 /* Media queries for responsive design */
-@media (max-width: 480px) {
+@media (max-width: 1280px) {
+  .animation-container {
+    width: 280px;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .animation-container {
+    width: 280px;
+    padding: 0 20px;
+  }
+
   .shape-container {
-    height: 50px;
-    margin-bottom: 15px;
+    height: 40px;
+    margin-bottom: 16px;
   }
   
   .loading-text {
-    margin-bottom: 30px;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .animation-container {
+    width: 280px;
+    padding: 0 20px;
+  }
+
+  .shape-container {
+    height: 40px;
+    margin-bottom: 16px;
+  }
+  
+  .loading-text {
+    margin-bottom: 16px;
   }
 }
 
@@ -377,20 +405,24 @@
               0 0 10px rgba(125, 253, 254, 0.2);
 }
 
-[data-theme="tron"] .progress-bar {
+[data-theme="tron"] .progress-container {
   background-color: rgba(125, 253, 254, 0.1);
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
-[data-theme="tron"] .progress-fill {
+[data-theme="tron"] .progress-bar {
   background-color: var(--typeinterface);
   box-shadow: 0 0 5px rgba(125, 253, 254, 0.3),
               0 0 10px rgba(125, 253, 254, 0.2);
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 [data-theme="tron"] .shapes-converged .shape {
-  border-color: var(--typequinary);
-  box-shadow: 0 0 8px rgba(255, 144, 0, 0.4),
-              0 0 16px rgba(255, 144, 0, 0.2);
+  border-color: var(--typeinterface);
+  box-shadow: 0 0 8px rgba(125, 253, 254, 0.4),
+              0 0 16px rgba(125, 253, 254, 0.2);
 }
 
 /* Respect user's motion preferences */
