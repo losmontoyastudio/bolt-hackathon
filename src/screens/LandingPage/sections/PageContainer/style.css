@@ -74,6 +74,8 @@
   font: var(--tech-spec-font);
   position: relative;
   text-align: center;
+  white-space: nowrap;
+  width: fit-content;
 }
 
 .page-container .navigation {
@@ -411,6 +413,8 @@
 
   .page-container .date {
     text-align: left;
+    white-space: nowrap;
+    width: fit-content;
   }
 
   .page-container .navigation {
