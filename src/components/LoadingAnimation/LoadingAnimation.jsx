@@ -17,6 +17,15 @@ export const LoadingAnimation = () => {
   // Add ref to track the animation start time
   const startTimeRef = useRef(Date.now());
 
+  // Function to trigger haptic feedback
+  const triggerHapticFeedback = useCallback(() => {
+    // Check if the device supports vibration
+    if ('vibrate' in navigator) {
+      // Vibrate for 50ms to simulate a gentle tap
+      navigator.vibrate(50);
+    }
+  }, []);
+
   // Function to safely remove scroll lock
   const removeScrollLock = useCallback(() => {
     if (document.body.classList.contains('no-scroll') && !scrollLockRestoredRef.current) {
@@ -129,6 +138,9 @@ export const LoadingAnimation = () => {
       } 
       // Line is complete, move to next line after a pause
       else {
+        // Trigger haptic feedback when line is complete
+        triggerHapticFeedback();
+        
         const nextLineTimer = setTimeout(() => {
           setCurrentText("");
           setCurrentLineIndex(currentLineIndex + 1);
@@ -146,6 +158,9 @@ export const LoadingAnimation = () => {
       // All lines are complete
       setTypeComplete(true);
       
+      // Trigger final haptic feedback
+      triggerHapticFeedback();
+      
       // Fade out animation after all lines are typed
       const fadeOutTimer = setTimeout(() => {
         setVisible(false);
@@ -161,7 +176,7 @@ export const LoadingAnimation = () => {
         clearTimeout(fadeOutTimer);
       };
     }
-  }, [currentLineIndex, currentText, lines, updateAnimation, removeScrollLock]);
+  }, [currentLineIndex, currentText, lines, updateAnimation, removeScrollLock, triggerHapticFeedback]);
 
   // Memoize shape rendering to prevent recalculation
   const renderShape = useCallback(() => {
