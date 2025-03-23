@@ -9,7 +9,7 @@
   /* Prevent layout shift when scroll is restored */
   padding-right: var(--scrollbar-width, 0px) !important;
   /* Add transition for smooth restoration */
-  transition: padding-right 0.1s ease;
+  transition: none; /* No transition for scroll lock to prevent jank */
 }
 
 /* Calculate scrollbar width on page load to prevent layout shifts */
@@ -32,6 +32,18 @@
   transition: opacity 0.3s ease-out, background-color var(--transition-speed) ease;
   /* Add containment for improved performance */
   contain: content;
+}
+
+.loading-animation.type-complete {
+  /* Ensure the loading animation stays visible until fade-out */
+  opacity: 1;
+  visibility: visible;
+}
+
+.loading-animation.fade-out {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-out;
 }
 
 .animation-container {
@@ -72,11 +84,6 @@
 .cursor {
   display: inline-block;
   animation: blink 0.7s step-end infinite;
-}
-
-.fade-out {
-  opacity: 0;
-  pointer-events: none;
 }
 
 /* Progress bar styles */
@@ -448,4 +455,20 @@
     animation: none !important;
     opacity: 0.8;
   }
+}
+
+/* Preloading state - allow content to render but keep overlay visible */
+.content-preloading {
+  overflow: auto !important;
+  height: auto !important;
+  position: static !important;
+  width: auto !important;
+}
+
+/* Keep shapes and text visible until fade completes */
+.fade-out .shape-container,
+.fade-out .loading-text,
+.fade-out .progress-container {
+  opacity: 1;
+  transition: none;
 } 

@@ -146,19 +146,33 @@ export const LoadingAnimation = () => {
       // All lines are complete
       setTypeComplete(true);
       
-      // Fade out animation after all lines are typed
-      const fadeOutTimer = setTimeout(() => {
-        setVisible(false);
-        // Make sure scroll is restored when animation finishes
-        removeScrollLock();
-      }, 600); // Shorter fade out time
+      // Preload the page content before fading out
+      // First, allow the page to start rendering behind the loading screen
+      document.body.classList.add('content-preloading');
       
-      // Store timer for cleanup
-      timersRef.current.push(fadeOutTimer);
+      // Remove scroll lock first so content can render properly
+      removeScrollLock();
+      
+      // Give the browser time to render the content behind the loading animation
+      const preloadTimer = setTimeout(() => {
+        // Add fade-out class to start transition
+        if (animationRef.current) {
+          animationRef.current.classList.add('fade-out');
+        }
+        
+        // Remove the loading animation after the fade-out animation is complete
+        const cleanupTimer = setTimeout(() => {
+          setVisible(false);
+          document.body.classList.remove('content-preloading');
+        }, 300); // Match fade-out transition time
+        
+        timersRef.current.push(cleanupTimer);
+      }, 400); // Short delay to ensure content is rendered
+      
+      timersRef.current.push(preloadTimer);
       
       return () => {
-        // Clear this specific timeout on cleanup
-        clearTimeout(fadeOutTimer);
+        timersRef.current.forEach(timer => clearTimeout(timer));
       };
     }
   }, [currentLineIndex, currentText, lines, updateAnimation, removeScrollLock]);
@@ -200,7 +214,8 @@ export const LoadingAnimation = () => {
 
   return (
     <div 
-      className={`loading-animation ${visible ? 'visible' : ''}`} 
+      ref={animationRef}
+      className={`loading-animation ${typeComplete ? 'type-complete' : ''}`} 
       style={animationStyles}
       role="progressbar"
       aria-label="Loading progress"
@@ -208,26 +223,24 @@ export const LoadingAnimation = () => {
       aria-valuemin="0"
       aria-valuemax="100"
     >
-      <div className="loading-content">
-        <div 
-          className="progress-bar"
-          style={{ width: `${progress}%` }}
-          aria-hidden="true"
-        />
-        <div className="text-content">
-          <div 
-            className="loading-text"
-            aria-live="polite"
-            aria-atomic="true"
-          >
-            {currentText}
-          </div>
+      <div className="animation-container">
+        <div className="shape-container" aria-hidden="true">
+          {renderShape()}
         </div>
         <div 
-          className="shape-container"
-          aria-hidden="true"
+          className="loading-text"
+          aria-live="polite"
+          aria-atomic="true"
         >
-          {renderShape()}
+          {currentText}
+          <span className="cursor">_</span>
+        </div>
+        <div className="progress-container">
+          <div 
+            className="progress-bar"
+            style={{ width: `${progress}%` }}
+            aria-hidden="true"
+          />
         </div>
       </div>
     </div>
