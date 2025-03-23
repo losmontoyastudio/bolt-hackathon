@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useMemo } from "react";
+import React, { useEffect, useState, useCallback, useMemo, useRef } from "react";
 import "./style.css";
 
 export const CoordinateToggle = () => {
@@ -19,6 +19,8 @@ export const CoordinateToggle = () => {
   const [coordinates, setCoordinates] = useState({ x: 0, y: 0 });
   // State for display position with boundary constraints
   const [displayPosition, setDisplayPosition] = useState({ x: 0, y: 0 });
+  // Reference to the button element to maintain focus
+  const buttonRef = useRef(null);
   
   // Cache computed values to prevent recalculations during theme changes
   const buttonClassNames = useMemo(() => 
@@ -33,7 +35,18 @@ export const CoordinateToggle = () => {
   
   // Apply preference when component mounts and when showCoordinates changes
   useEffect(() => {
+    // Track if element was focused before preference change
+    const wasFocused = document.activeElement === buttonRef.current;
+    
     localStorage.setItem("showCoordinates", showCoordinates.toString());
+    
+    // Restore focus after preference change if it was focused
+    if (wasFocused && buttonRef.current) {
+      // Use a small timeout to let the DOM update first
+      setTimeout(() => {
+        buttonRef.current.focus();
+      }, 10);
+    }
   }, [showCoordinates]);
   
   // Memoize mouse move handler to prevent recreation on each render
@@ -101,6 +114,7 @@ export const CoordinateToggle = () => {
         aria-label={buttonAriaLabel}
         // Add containment for performance
         style={{ contain: "layout paint" }}
+        ref={buttonRef}
       >
         <div className="coordinate-toggle-icon">
           <div className="xy-icon">x:y</div>

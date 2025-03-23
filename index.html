@@ -68,10 +68,11 @@
         margin: 0px;
         height: 100%;
       }
-      /* a blue color as a generic focus style */
+      /* Consistent focus style for accessibility */
       button:focus-visible {
-        outline: 2px solid var(--typesignal) !important;
-        outline: -webkit-focus-ring-color auto 5px !important;
+        outline: var(--focus-outline) !important;
+        outline-offset: var(--focus-outline-offset) !important;
+        box-shadow: var(--focus-shadow) !important;
       }
       a {
         text-decoration: none;

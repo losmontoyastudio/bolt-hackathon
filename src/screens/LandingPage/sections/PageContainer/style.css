@@ -99,9 +99,19 @@
   width: fit-content;
   text-decoration: none;
   transition: color 0.3s ease;
-  cursor: pointer;
-  z-index: 1;
-  font-weight: 200;
+}
+
+/* Add clear focus indicator for keyboard navigation */
+.page-container .nav-link:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+  box-shadow: var(--focus-shadow);
+  text-decoration: none;
+  /* Ensure focus is visible in both light and dark themes */
+  color: var(--typesignal);
+  /* Prevent any animations or transitions from interfering with focus state */
+  transform: none;
+  z-index: 2;
 }
 
 .page-container .nav-link:hover {
@@ -109,7 +119,7 @@
 }
 
 .page-container .nav-link.active {
-  font-weight: 700;
+  color: var(--typedata);
 }
 
 .page-container .nav-link.register {

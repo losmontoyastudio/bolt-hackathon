@@ -25,10 +25,12 @@
 }
 
 .theme-toggle-btn:focus-visible {
-  outline: 2px solid var(--typesignal);
-  outline-offset: 3px;
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
   transform: scale(1.05);
-  box-shadow: 0 0 0 4px rgba(var(--typeinterface-rgb), 0.1);
+  box-shadow: var(--focus-shadow);
+  /* Ensure focus is maintained during theme transitions */
+  z-index: 1000;
 }
 
 .theme-toggle-icon {

@@ -27,6 +27,14 @@
   /* Transition for smooth theme switching */
   --transition-speed: 0.3s;
   
+  /* Accessibility focus styles for WCAG AA compliance */
+  --focus-outline-color: rgba(0, 85, 255, 1); /* A11y blue with sufficient contrast ratio */
+  --focus-outline-width: 2px;
+  --focus-outline-offset: 3px;
+  --focus-outline-style: solid;
+  --focus-outline: var(--focus-outline-width) var(--focus-outline-style) var(--focus-outline-color);
+  --focus-shadow: 0 0 0 4px rgba(0, 85, 255, 0.2); /* A11y blue with subtle shadow */
+  
   /* Font variables */
   --body-font-family: "JetBrains Mono", Helvetica;
   --body-font-size: 16px;
@@ -115,6 +123,10 @@
   --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.25);
   --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.3);
   --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.35);
+  
+  /* Accessibility focus styles for dark theme (WCAG AA compliant) */
+  --focus-outline-color: rgba(120, 170, 255, 1); /* Brighter blue for dark theme with sufficient contrast */
+  --focus-shadow: 0 0 0 4px rgba(120, 170, 255, 0.3); /* Brighter shadow for visibility */
 }
 
 /* Targeted transitions for theme changes - replacing the global transition */
@@ -140,4 +152,49 @@ button, .card, [class*="shadow"], [class*="elevation"], .theme-toggle-btn, .coor
   transition: box-shadow var(--transition-speed) ease;
   /* Add containment where appropriate to limit repaints */
   contain: layout paint;
+}
+
+/* Global focus styles for keyboard accessibility */
+*:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+  box-shadow: var(--focus-shadow);
+  transition: outline var(--transition-speed) ease, 
+              outline-offset var(--transition-speed) ease, 
+              box-shadow var(--transition-speed) ease;
+}
+
+/* Accessibility testing helper styles */
+[data-was-focused="true"] {
+  position: relative;
+}
+
+[data-was-focused="true"]::after {
+  content: "Focused";
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--focus-outline-color);
+  color: white;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-size: 10px;
+  pointer-events: none;
+  z-index: 9999;
+  animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Additional styles for keyboard focus indicators */
+a:focus-visible, 
+button:focus-visible {
+  /* Added styles to ensure focus is clearly visible */
+  position: relative;
+  z-index: 1;
 }

@@ -32,8 +32,12 @@
 }
 
 .coordinate-toggle-btn:focus-visible {
-  outline: 1px solid var(--typesignal);
-  outline-offset: 2px;
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+  box-shadow: var(--focus-shadow);
+  /* Ensure focus is maintained during theme transitions */
+  z-index: 1000;
+  transform: scale(1.05);
 }
 
 .coordinate-toggle-btn.active {

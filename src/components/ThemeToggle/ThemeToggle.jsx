@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useMemo } from "react";
+import React, { useEffect, useState, useCallback, useMemo, useRef } from "react";
 import "./style.css";
 
 // Feature detection for localStorage
@@ -30,6 +30,9 @@ export const ThemeToggle = () => {
     // Otherwise check system preference
     return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
+  
+  // Reference to the button element to maintain focus
+  const buttonRef = useRef(null);
 
   // Cache theme-dependent values to prevent recalculations
   const themeValues = useMemo(() => ({
@@ -40,6 +43,9 @@ export const ThemeToggle = () => {
   // Apply theme when component mounts and when isDarkMode changes
   // Use useCallback to memoize the applyTheme function
   const applyTheme = useCallback((isDark) => {
+    // Track if element was focused before theme change
+    const wasFocused = document.activeElement === buttonRef.current;
+    
     if (isDark) {
       document.documentElement.setAttribute("data-theme", "dark");
       if (supportsLocalStorage()) {
@@ -50,6 +56,14 @@ export const ThemeToggle = () => {
       if (supportsLocalStorage()) {
         localStorage.setItem("theme", "light");
       }
+    }
+    
+    // Restore focus after theme change if it was focused
+    if (wasFocused && buttonRef.current) {
+      // Use a small timeout to let the DOM update first
+      setTimeout(() => {
+        buttonRef.current.focus();
+      }, 10);
     }
   }, []);
 
@@ -102,6 +116,7 @@ export const ThemeToggle = () => {
       aria-label={themeValues.ariaLabel}
       // Add containment for performance optimization
       style={{ contain: "layout paint" }}
+      ref={buttonRef}
     >
       <div className="theme-toggle-icon">
         <div className="outer-circle"></div>
