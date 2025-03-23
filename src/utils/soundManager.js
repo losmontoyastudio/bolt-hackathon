@@ -20,14 +20,21 @@ class SoundManager {
     });
   }
 
+  isMobileDevice() {
+    return window.matchMedia('(max-width: 768px)').matches;
+  }
+
   loadSoundPreference() {
     try {
-      // Default to true for first-time visitors
+      // Default to true for first-time visitors, but false on mobile
       const savedPreference = localStorage.getItem('tronSoundEnabled');
-      return savedPreference === null ? true : savedPreference === 'true';
+      if (savedPreference === null) {
+        return !this.isMobileDevice(); // Default to false on mobile
+      }
+      return savedPreference === 'true';
     } catch (error) {
       console.warn('Failed to load sound preference:', error);
-      return true; // Default to true if there's an error
+      return !this.isMobileDevice(); // Default to false on mobile if error
     }
   }
 
@@ -46,7 +53,8 @@ class SoundManager {
   }
 
   playHoverSound(isThemeTron = false) {
-    if (!isThemeTron || !this.isEnabled) return;
+    // Don't play sound on mobile devices
+    if (this.isMobileDevice() || !isThemeTron || !this.isEnabled) return;
 
     const now = Date.now();
     if (now - this.lastPlayTime < this.minPlayInterval) return;
@@ -74,6 +82,12 @@ class SoundManager {
   }
 
   setEnabled(enabled) {
+    // Don't allow enabling sound on mobile
+    if (this.isMobileDevice()) {
+      this.isEnabled = false;
+      this.saveSoundPreference(false);
+      return;
+    }
     this.isEnabled = enabled;
     this.saveSoundPreference(enabled);
   }

@@ -55,8 +55,9 @@
 
 /* Media queries for responsive design */
 @media (max-width: 768px) {
-  .sound-toggle {
-    display: none; /* Hide on mobile regardless of theme */
+  .sound-toggle,
+  [data-theme="tron"] .sound-toggle {
+    display: none !important; /* Force hide on mobile for all themes */
   }
 }
 
