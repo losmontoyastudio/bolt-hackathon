@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useMemo, useCallback } from "react";
 import "./style.css";
 
 export const LoadingAnimation = () => {
@@ -10,6 +10,8 @@ export const LoadingAnimation = () => {
   const [currentShape, setCurrentShape] = useState(null);
   const [shapesConverged, setShapesConverged] = useState(false);
   const animationRef = useRef(null);
+  // Use ref to store timeouts for easier cleanup
+  const timersRef = useRef([]);
 
   // Add class to body to disable scrolling when component mounts
   useEffect(() => {
@@ -18,6 +20,8 @@ export const LoadingAnimation = () => {
     // Remove class when component unmounts
     return () => {
       document.body.classList.remove('no-scroll');
+      // Clear any pending timeouts
+      timersRef.current.forEach(timer => clearTimeout(timer));
     };
   }, []);
 
@@ -28,16 +32,24 @@ export const LoadingAnimation = () => {
     }
   }, [visible]);
 
-  const lines = [
+  // Cache lines to prevent recreating array on each render
+  const lines = useMemo(() => [
     "loading the world's largest hackathon...",
     "assembling prizes...",
     "wrestling with github permissions...",
     "connecting judges...",
     "staring at cursor error messages...",
     "ready"
-  ];
+  ], []);
 
-  useEffect(() => {
+  // Memoize animation container styles to prevent recalculation
+  const animationStyles = useMemo(() => ({
+    contain: 'content',
+    willChange: 'opacity'
+  }), []);
+
+  // Use useCallback for animation logic to prevent recreating on each render
+  const updateAnimation = useCallback(() => {
     // Update progress based on current line
     setProgress((currentLineIndex / (lines.length - 1)) * 100);
     
@@ -50,7 +62,11 @@ export const LoadingAnimation = () => {
     if (currentLineIndex === lines.length - 1 && currentText === lines[lines.length - 1]) {
       setShapesConverged(true);
     }
+  }, [currentLineIndex, currentText, lines]);
 
+  useEffect(() => {
+    updateAnimation();
+    
     // Start typing animation
     if (currentLineIndex < lines.length) {
       const line = lines[currentLineIndex];
@@ -61,7 +77,13 @@ export const LoadingAnimation = () => {
           setCurrentText(line.substring(0, currentText.length + 1));
         }, 30); // Faster typing speed
         
-        return () => clearTimeout(typingTimer);
+        // Store timer for cleanup
+        timersRef.current.push(typingTimer);
+        
+        return () => {
+          // Clear this specific timeout on cleanup
+          clearTimeout(typingTimer);
+        };
       } 
       // Line is complete, move to next line after a pause
       else {
@@ -70,7 +92,13 @@ export const LoadingAnimation = () => {
           setCurrentLineIndex(currentLineIndex + 1);
         }, currentLineIndex === lines.length - 1 ? 800 : 400); // Shorter pauses
         
-        return () => clearTimeout(nextLineTimer);
+        // Store timer for cleanup
+        timersRef.current.push(nextLineTimer);
+        
+        return () => {
+          // Clear this specific timeout on cleanup
+          clearTimeout(nextLineTimer);
+        };
       }
     } else {
       // All lines are complete
@@ -81,12 +109,18 @@ export const LoadingAnimation = () => {
         setVisible(false);
       }, 600); // Shorter fade out time
       
-      return () => clearTimeout(fadeOutTimer);
+      // Store timer for cleanup
+      timersRef.current.push(fadeOutTimer);
+      
+      return () => {
+        // Clear this specific timeout on cleanup
+        clearTimeout(fadeOutTimer);
+      };
     }
-  }, [currentLineIndex, currentText, lines]);
+  }, [currentLineIndex, currentText, lines, updateAnimation]);
 
-  // Render the current shape
-  const renderShape = () => {
+  // Memoize shape rendering to prevent recalculation
+  const renderShape = useCallback(() => {
     if (currentLineIndex === 5 && shapesConverged) {
       return (
         <div className="shapes-converged">
@@ -113,14 +147,19 @@ export const LoadingAnimation = () => {
       default:
         return null;
     }
-  };
+  }, [currentShape, currentLineIndex, shapesConverged]);
 
+  // If animation is complete, don't render anything
   if (!visible) {
     return null;
   }
 
   return (
-    <div className={`loading-animation ${typeComplete ? "fade-out" : ""}`} ref={animationRef}>
+    <div 
+      className={`loading-animation ${typeComplete ? "fade-out" : ""}`} 
+      ref={animationRef}
+      style={animationStyles}
+    >
       <div className="animation-container">
         <div className="shape-container">
           {renderShape()}
@@ -129,7 +168,10 @@ export const LoadingAnimation = () => {
           {currentText}<span className="cursor">_</span>
         </div>
         <div className="progress-container">
-          <div className="progress-bar" style={{ width: `${progress}%` }}></div>
+          <div 
+            className="progress-bar" 
+            style={{ width: `${progress}%` }}
+          ></div>
         </div>
       </div>
     </div>

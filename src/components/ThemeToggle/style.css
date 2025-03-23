@@ -13,8 +13,11 @@
   align-items: center;
   justify-content: center;
   padding: 0;
-  transition: transform 0.3s ease, background-color var(--transition-speed) ease;
+  transition: background-color var(--transition-speed) ease, 
+              box-shadow var(--transition-speed) ease;
   box-shadow: var(--shadow-sm);
+  contain: layout;
+  will-change: background-color, box-shadow;
 }
 
 .theme-toggle-btn:hover {
@@ -35,6 +38,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  contain: layout paint style;
 }
 
 .outer-circle {
@@ -46,7 +50,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transition: border-color 0.3s ease;
+  transition: border-color var(--transition-speed) ease;
+  will-change: border-color;
 }
 
 .inner-circle {
@@ -58,7 +63,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transition: background-color 0.3s ease;
+  transition: background-color var(--transition-speed) ease;
+  will-change: background-color;
 }
 
 /* Media queries for responsive spacing */

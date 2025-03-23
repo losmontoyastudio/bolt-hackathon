@@ -117,12 +117,27 @@
   --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.35);
 }
 
-/* Apply transitions to all elements for smooth theme switching */
-* {
-  transition: background-color var(--transition-speed) ease,
-              color var(--transition-speed) ease,
-              border-color var(--transition-speed) ease,
-              fill var(--transition-speed) ease,
-              stroke var(--transition-speed) ease,
-              box-shadow var(--transition-speed) ease;
+/* Targeted transitions for theme changes - replacing the global transition */
+/* For text elements */
+body, p, h1, h2, h3, h4, h5, h6, span, a, button, input, textarea, .loading-text {
+  transition: color var(--transition-speed) ease;
+}
+
+/* For backgrounds */
+body, main, section, div, header, footer, nav, aside, button, input, textarea {
+  transition: background-color var(--transition-speed) ease;
+}
+
+/* For borders and SVG elements */
+button, input, textarea, svg, [class*="border"], [class*="divider"], [class*="line"] {
+  transition: border-color var(--transition-speed) ease, 
+             fill var(--transition-speed) ease, 
+             stroke var(--transition-speed) ease;
+}
+
+/* For box shadows - only applying to elements that likely have shadows */
+button, .card, [class*="shadow"], [class*="elevation"], .theme-toggle-btn, .coordinate-toggle-btn {
+  transition: box-shadow var(--transition-speed) ease;
+  /* Add containment where appropriate to limit repaints */
+  contain: layout paint;
 }

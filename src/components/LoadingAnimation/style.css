@@ -19,7 +19,10 @@
   justify-content: center;
   align-items: center;
   z-index: 9999;
+  /* Only transition the necessary properties */
   transition: opacity 0.3s ease-out, background-color var(--transition-speed) ease;
+  /* Add containment for improved performance */
+  contain: content;
 }
 
 .animation-container {
@@ -29,6 +32,8 @@
   justify-content: center;
   width: 300px;
   max-width: 90vw;
+  /* Add containment to limit repaints */
+  contain: layout style;
 }
 
 .shape-container {
@@ -37,6 +42,8 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
+  /* Add containment for animations */
+  contain: layout;
 }
 
 .loading-text {
@@ -49,6 +56,8 @@
   text-align: center;
   min-height: 15px;
   margin-bottom: 40px;
+  /* Only transition color */
+  transition: color var(--transition-speed) ease;
 }
 
 .cursor {
@@ -67,13 +76,17 @@
   height: 1px;
   background-color: var(--bgsecondary);
   overflow: hidden;
+  /* Only transition background-color */
+  transition: background-color var(--transition-speed) ease;
 }
 
 .progress-bar {
   height: 100%;
   background-color: var(--typeinterface);
   width: 0;
+  /* Only transition necessary properties */
   transition: width 0.3s ease-out, background-color var(--transition-speed) ease;
+  will-change: width, background-color;
 }
 
 /* Shape styles */
@@ -108,6 +121,9 @@
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   background: var(--typeinterface);
   opacity: 1;
+  /* Only transition background color */
+  transition: background-color var(--transition-speed) ease;
+  will-change: background-color;
 }
 
 .bolt {
@@ -130,6 +146,7 @@
   background: var(--typeinterface);
   opacity: 1;
   transition: background-color var(--transition-speed) ease;
+  will-change: background-color;
 }
 
 .square {

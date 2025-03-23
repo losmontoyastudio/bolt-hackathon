@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback, useMemo } from "react";
 import "./style.css";
 
 // Feature detection for localStorage
@@ -31,9 +31,16 @@ export const ThemeToggle = () => {
     return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
 
+  // Cache theme-dependent values to prevent recalculations
+  const themeValues = useMemo(() => ({
+    theme: isDarkMode ? "dark" : "light",
+    ariaLabel: isDarkMode ? "Switch to light mode" : "Switch to dark mode",
+  }), [isDarkMode]);
+
   // Apply theme when component mounts and when isDarkMode changes
-  useEffect(() => {
-    if (isDarkMode) {
+  // Use useCallback to memoize the applyTheme function
+  const applyTheme = useCallback((isDark) => {
+    if (isDark) {
       document.documentElement.setAttribute("data-theme", "dark");
       if (supportsLocalStorage()) {
         localStorage.setItem("theme", "dark");
@@ -44,7 +51,14 @@ export const ThemeToggle = () => {
         localStorage.setItem("theme", "light");
       }
     }
-  }, [isDarkMode]);
+  }, []);
+
+  useEffect(() => {
+    // Create a single requestAnimationFrame call to batch DOM changes
+    requestAnimationFrame(() => {
+      applyTheme(isDarkMode);
+    });
+  }, [isDarkMode, applyTheme]);
   
   // Listen for system preference changes if no saved theme
   useEffect(() => {
@@ -77,15 +91,17 @@ export const ThemeToggle = () => {
   }, [savedTheme]);
 
   // Toggle between dark and light mode
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-  };
+  const toggleTheme = useCallback(() => {
+    setIsDarkMode(prevState => !prevState);
+  }, []);
 
   return (
     <button 
       className="theme-toggle-btn" 
       onClick={toggleTheme}
-      aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+      aria-label={themeValues.ariaLabel}
+      // Add containment for performance optimization
+      style={{ contain: "layout paint" }}
     >
       <div className="theme-toggle-icon">
         <div className="outer-circle"></div>
