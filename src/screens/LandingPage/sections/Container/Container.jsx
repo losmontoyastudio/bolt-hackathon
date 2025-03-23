@@ -112,9 +112,15 @@ export const Container = () => {
                 </TronSoundLink>
 
                 <TronSoundLink>
-                  <a href="https://x.com/hsrhackerhouse" target="_blank" rel="noopener noreferrer" className="sponsor">
+                  <a 
+                    href="https://x.com/hsrhackerhouse" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="sponsor social-link"
+                    aria-label="Follow @hsrhackerhouse on X (formerly Twitter)"
+                  >
                     <p className="submission-deadline-2">
-                      <span className="text-wrapper-16">@hsrhackerhouse</span>
+                      <span className="text-wrapper-16 high-contrast">@hsrhackerhouse</span>
                       <span className="text-wrapper-17">community</span>
                     </p>
                   </a>

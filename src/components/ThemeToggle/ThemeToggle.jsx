@@ -129,13 +129,18 @@ export const ThemeToggle = () => {
         className={`theme-toggle-btn ${currentTheme}`}
         onClick={toggleTheme}
         aria-label={themeValues.ariaLabel}
+        aria-pressed={currentTheme !== "light"}
+        role="switch"
         style={{ contain: "layout paint" }}
         ref={buttonRef}
       >
-        <div className="theme-toggle-icon">
+        <div className="theme-toggle-icon" aria-hidden="true">
           <div className="outer-circle"></div>
           <div className="inner-circle"></div>
         </div>
+        <span className="visually-hidden">
+          Current theme: {currentTheme}
+        </span>
       </button>
     </TronSoundLink>
   );

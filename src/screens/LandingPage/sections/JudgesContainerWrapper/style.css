@@ -395,6 +395,23 @@
   }
 }
 
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .judges-container-wrapper .judge-container-link .u-a,
+  .judges-container-wrapper .judge-container-link .img,
+  .judges-container-wrapper .judge-container-link .clone-img {
+    animation: none !important;
+    filter: none !important;
+  }
+  
+  .judges-container-wrapper .judge-container-link.in-viewport .u-a,
+  .judges-container-wrapper .judge-container-link.in-viewport .img,
+  .judges-container-wrapper .judge-container-link.in-viewport .clone-img {
+    animation: none !important;
+    filter: none !important;
+  }
+}
+
 [class*="title"] {
   color: var(--typebody);
 }

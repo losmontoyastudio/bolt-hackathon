@@ -64,7 +64,7 @@ export const PrizesContainer = () => {
               <div className="div-4">
                 <div className="div-6">
                   <div className="text-wrapper-11">tier_02</div>
-                  <div className="text-wrapper-12">層_02</div>
+                  <div className="text-wrapper-12" lang="ja">層_02</div>
                 </div>
 
                 <AspectRatioImage
@@ -104,7 +104,7 @@ export const PrizesContainer = () => {
               <div className="div-4">
                 <div className="div-6">
                   <div className="text-wrapper-11">tier_03</div>
-                  <div className="text-wrapper-12">層_03</div>
+                  <div className="text-wrapper-12" lang="ja">層_03</div>
                 </div>
 
                 <AspectRatioImage

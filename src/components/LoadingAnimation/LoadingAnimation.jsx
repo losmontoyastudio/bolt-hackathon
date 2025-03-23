@@ -200,22 +200,34 @@ export const LoadingAnimation = () => {
 
   return (
     <div 
-      className={`loading-animation ${typeComplete ? "fade-out" : ""}`} 
-      ref={animationRef}
+      className={`loading-animation ${visible ? 'visible' : ''}`} 
       style={animationStyles}
+      role="progressbar"
+      aria-label="Loading progress"
+      aria-valuenow={progress}
+      aria-valuemin="0"
+      aria-valuemax="100"
     >
-      <div className="animation-container">
-        <div className="shape-container">
-          {renderShape()}
-        </div>
-        <div className="loading-text">
-          {currentText}<span className="cursor">_</span>
-        </div>
-        <div className="progress-container">
+      <div className="loading-content">
+        <div 
+          className="progress-bar"
+          style={{ width: `${progress}%` }}
+          aria-hidden="true"
+        />
+        <div className="text-content">
           <div 
-            className="progress-bar" 
-            style={{ width: `${progress}%` }}
-          ></div>
+            className="loading-text"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            {currentText}
+          </div>
+        </div>
+        <div 
+          className="shape-container"
+          aria-hidden="true"
+        >
+          {renderShape()}
         </div>
       </div>
     </div>

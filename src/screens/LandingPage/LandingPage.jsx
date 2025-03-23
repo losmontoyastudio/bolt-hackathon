@@ -14,18 +14,21 @@ import "./style.css";
 export const LandingPage = () => {
   return (
     <div className="landing-page">
+      <a href="#main-content" className="skip-link">Skip to main content</a>
       <LoadingAnimation />
       <CoordinateToggle />
       <SoundToggle />
       <ThemeToggle />
-      <div className="centered-content">
-        <PageContainer />
-        <PrizesContainer />
-        <Container />
-        <JudgesContainerWrapper />
-        <FaqContainerWrapper />
-        <FrameWrapper />
-      </div>
+      <main id="main-content" role="main">
+        <div className="centered-content">
+          <PageContainer />
+          <PrizesContainer />
+          <Container />
+          <JudgesContainerWrapper />
+          <FaqContainerWrapper />
+          <FrameWrapper />
+        </div>
+      </main>
     </div>
   );
 };

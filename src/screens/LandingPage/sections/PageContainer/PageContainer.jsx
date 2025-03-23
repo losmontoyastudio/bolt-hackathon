@@ -160,7 +160,7 @@ export const PageContainer = () => {
       <div className="main-container">
         <div className="landing-container-wrapper">
           <div className="landing-container">
-            <header className="header-section">
+            <header className="header-section" role="banner">
               <div className="header-content">
                 <div className="logo-container">
                   <TronSoundLink>
@@ -183,7 +183,7 @@ export const PageContainer = () => {
                   </TronSoundLink>
                   <div className="date">2025 march</div>
                 </div>
-                <nav className="navigation" aria-label="Main navigation">
+                <nav className="navigation" aria-label="Main navigation" role="navigation">
                   <TronSoundLink>
                     <a href="#about" className={`nav-link text-slide-animation ${activeSection === "about" ? "active" : ""}`} aria-current={activeSection === "about" ? "page" : undefined}>
                       <span>about</span>

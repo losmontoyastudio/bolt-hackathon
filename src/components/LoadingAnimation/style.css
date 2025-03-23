@@ -391,4 +391,29 @@
   border-color: var(--typequinary);
   box-shadow: 0 0 8px rgba(255, 144, 0, 0.4),
               0 0 16px rgba(255, 144, 0, 0.2);
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .loading-animation {
+    transition: none !important;
+  }
+  
+  .loading-animation .progress-bar {
+    transition: width 0.1s linear !important;
+  }
+  
+  .loading-animation .cursor {
+    animation: none !important;
+  }
+  
+  .shape {
+    animation: none !important;
+    transform: scale(1) !important;
+  }
+  
+  .shapes-converged .shape {
+    animation: none !important;
+    opacity: 0.8;
+  }
 } 
