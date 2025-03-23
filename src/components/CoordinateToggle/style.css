@@ -1,6 +1,6 @@
 .coordinate-toggle-btn {
   position: fixed;
-  bottom: 64px; /* Position just above theme toggle */
+  bottom: 64px; /* Base position: theme toggle (20px) + theme height (40px) + gap (4px) */
   right: 20px;
   width: 40px;
   height: 40px;
@@ -47,7 +47,7 @@
 
 /* TRON theme specific styles */
 [data-theme="tron"] .coordinate-toggle-btn {
-  bottom: 108px; /* Expanded spacing only in TRON theme */
+  bottom: 108px; /* TRON theme: theme toggle (20px) + theme height (40px) + gap (4px) + sound toggle (40px) + gap (4px) */
   border: 1px solid var(--typeinterface);
 }
 
@@ -128,25 +128,23 @@
   will-change: color;
 }
 
-/* Media queries for responsive spacing - match theme toggle */
+/* Media queries for responsive spacing */
 @media (max-width: 768px) {
   .coordinate-toggle-btn {
-    bottom: 60px;
-    right: 16px;
+    display: none !important; /* Force hide on mobile for all themes */
   }
   
-  [data-theme="tron"] .coordinate-toggle-btn {
-    bottom: 104px;
+  /* Hide coordinate display on mobile as well */
+  .coordinate-display {
+    display: none !important;
   }
 }
 
+/* Remove conflicting mobile styles */
 @media (max-width: 480px) {
-  .coordinate-toggle-btn {
-    bottom: 56px;
-    right: 12px;
-  }
-  
+  /* Remove these styles as the toggle is hidden anyway */
+  .coordinate-toggle-btn,
   [data-theme="tron"] .coordinate-toggle-btn {
-    bottom: 100px;
+    display: none !important;
   }
 } 
